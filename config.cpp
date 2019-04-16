@@ -2,8 +2,8 @@ class CfgPatches
 {
 	class dzn_MG_Tripod
 	{
-		units[] = {"dzn_tripod_gpmg_nato"};
-		weapons[] = {};
+		units[] = {};
+		weapons[] = {"dzn_tripod_mg_nato"};
 		requiredVersion = 0.1;
 		requiredAddons[] = {"CBA_MAIN","CUP_Weapons_M240","CUP_Weapons_M249"};
 		author = "10Dozen";
