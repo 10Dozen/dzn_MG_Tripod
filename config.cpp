@@ -96,11 +96,4 @@ class CfgWeapons
 	{
 		MG_TRIPOD_SLOT_CUP_M249
 	};
-	
-	class LMG_Mk200_F: Rifle_Long_Base_F {};
-	class rhs_weap_M249_base: LMG_Mk200_F {};
-	class rhs_weap_m240_base: rhs_weap_M249_base
-	{
-		MG_TRIPOD_SLOT_CUP_M240
-	};
 };
