@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="dzn_MG_Tripod">
+	<Package name="dzn_MG_Tripod">
+		<Container name="Settings">
+			<!--
+			SETTINGS
+			-->
+			<Key ID="STR_MG_Tripod_Enabled">
+				<Original>Deployed effect enabled</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_Enabled_desc">
+				<Original>Enables custom aim/recoil coefficient when machine gun deployed using tripod</Original>
+			</Key>
+			
+			<Key ID="STR_MG_Tripod_DeployedAimCoef">
+				<Original>Deplyed Aim sway coefficient</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_DeployedAimCoef_desc">
+				<Original>Custom aim sway coefficient when machine gun deployed using tripod</Original>
+			</Key>
+			
+			<Key ID="STR_MG_Tripod_DeployedRecoilCoef">
+				<Original>Deplyed Recoil coefficient</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_DeployedRecoilCoef_desc">
+				<Original>Custom recoil coefficient when machine gun deployed using tripod</Original>
+			</Key>
+			
+			
+		</Container>
+	</Package>
+</Project>
