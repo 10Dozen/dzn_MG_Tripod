@@ -1,6 +1,8 @@
 # dzn_MG_Tripod
 Tripod attachement for machine guns
 
+Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=1713801249
+
 Adds tripod attachement for M240 and M249 family machine guns.
 
 **Version:** 1
