@@ -10,7 +10,7 @@ Adds tripod attachement for M240 and M249 family machine guns.
 **Requirements:** CBA_A3, CUP Weapons
 
 **Features:**
-- M122 tripod attachement compatible with M240/L7A2/MAG and M249 machine guns
+- M122 tripod attachement compatible with M240/L7A2/MAG, M249, M60 and M60E4 machine guns
 - Deployed tripod affects weapon recoil and sway, making machine gun more accurate at long ranges
 
 #### License: APL-SA
