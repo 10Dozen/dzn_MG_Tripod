@@ -5,7 +5,7 @@ Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=1713801249
 
 Adds tripod attachement for M240 and M249 family machine guns.
 
-**Version:** 1
+**Version:** 1.1
 
 **Requirements:** CBA_A3, CUP Weapons
 

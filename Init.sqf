@@ -1,6 +1,12 @@
-#include "macro.hpp"
+/*
+	TODO:
+		mk200 		"LMG_Mk200_F"
+		"MMG_01_hex_F"
+		"MMG_02_black_F"
+*/
 
-call compile preprocessFileLineNumbers format ["%1\Settings.sqf", PATH];
+
+#include "macro.hpp"
 
 // Exit at dedicated or headless client
 if (!hasInterface) exitWith {};
@@ -11,13 +17,9 @@ GVAR(TripodClasses) = [
 
 // Functions
 GVAR(fnc_isTripodInstalled) = {
-	private _items = primaryWeaponItems player;
-	private _isAttached = (true) in (_items apply { _x in GVAR(TripodClasses) });
-	//{ _x } count (_items apply { _x in GVAR(TripodClasses) }) > 0;
-	
-	if !(_isAttached) exitWith { false };
-	
-	true
+    private _items = primaryWeaponItems player;
+
+    (_items findIf { _x in GVAR(TripodClasses) } > 0)
 };
 
 GVAR(fnc_affectSway) = {
@@ -66,7 +68,4 @@ GVAR(fnc_addDeployEH) = {
 
 
 // Init
-[] spawn {
-	waitUntil { time > 5 && local player && GVAR(Enabled) };
-	[] call GVAR(fnc_addDeployEH);
-};
+[] call GVAR(fnc_addDeployEH);
