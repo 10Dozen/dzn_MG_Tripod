@@ -28,5 +28,17 @@
 			
 			
 		</Container>
+		
+		<Container name="Items">
+			<Key ID="STR_MG_Tripod_MGUniversalTripod">
+				<Original>MG Tripod (Universal)</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_M122Tripod_M240">
+				<Original>M122 MG Tripod (M240/M249 mount)</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_M122Tripod_M60">
+				<Original>M122 MG Tripod (M60 mount)</Original>
+			</Key>
+		</Container>
 	</Package>
 </Project>

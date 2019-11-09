@@ -1,0 +1,10 @@
+name = "dzn MG Tripod";
+actionName = "WEBSITE";
+action = "";
+tooltip = "dzn MG Tripod";
+overview = "";
+author = "10Dozen";
+description = "dzn MG Tripod - Version 1.2";
+logo = "mod.paa";
+logoOver = "mod.paa";
+overviewPicture = "mod.paa";
