@@ -1,3 +1,30 @@
+/*
+	0) Add `dzn_MGTripod_deployedGesture` property to weapon class 
+
+	1) Add "loadout" or "weapon" CBA EH
+	https://github.com/CBATeam/CBA_A3/wiki/Player-Events
+
+	1.1) If primaryWeapon has `dzn_MGTripod_deployedGesture` prop -> add `Deployed EH` and `Reload EH`
+	1.2) If primaryWeapon has no `dzn_MGTripod_deployedGesture` prop -> remove `Deployed EH` and `Reload EH`
+	
+	2) On `Deployed EH`:
+		If (curWeap != priWeap) exit {}
+		If deployed: 
+			set unit variable `deployedGesture` to (getText (configFile >> "CfgWeapons" >> _w >> "dzn_MGTripod_deployedGesture"))
+			playAction deployedGesture
+			
+		If not deploayed
+			playAction "gestureNod"
+			
+	3) On `Reload EH`:
+		If (curWeap != priWeap) exit {}
+		If (getVariable `deployedGestureSwitched` == false) exit {}
+		If isWeaponDeployed:
+			playAction deployedGesture
+		
+		
+*/
+
 #include "macro.hpp"
 
 // Exit at dedicated or headless client
