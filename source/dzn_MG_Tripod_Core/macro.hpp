@@ -2,8 +2,8 @@
 #define	gADDON MG_Tripod
 #define	gADDON_NAME dzn_##gADDON
 
-#define gADDON_PATH \##gADDON_NAME
-#define gFNC_PATH gADDON_PATH##\functions\##
+#define gADDON_PATH \gADDON_NAME
+#define gFNC_PATH gADDON_PATH##_Core\functions\##
 
 #define QUOTE(s) #s
 

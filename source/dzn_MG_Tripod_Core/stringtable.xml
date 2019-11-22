@@ -26,6 +26,13 @@
 				<Original>Custom recoil coefficient when machine gun deployed using tripod</Original>
 			</Key>
 			
+			<Key ID="STR_MG_Tripod_Enabled_Gesture">
+				<Original>Switch hand anim on deploy</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_Enabled_Gesture_desc">
+				<Original>Enables animation switch when weapon deployed (MGs)</Original>
+			</Key>
+			
 			
 		</Container>
 		
@@ -38,6 +45,22 @@
 			</Key>
 			<Key ID="STR_MG_Tripod_M122Tripod_M60">
 				<Original>M122 MG Tripod (M60 mount)</Original>
+			</Key>
+		</Container>
+
+		<Container name="InGame">
+			<Key ID="STR_MG_Tripod_Action_Mount">
+				<Original>Mount %1</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_Action_Dismount">
+				<Original>Dismount %1</Original>
+			</Key>
+
+			<Key ID="STR_MG_Tripod_ProgressBar_Mount">
+				<Original>Mounting tripod</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_ProgressBar_Dismount">
+				<Original>Dismounting tripod</Original>
 			</Key>
 		</Container>
 	</Package>

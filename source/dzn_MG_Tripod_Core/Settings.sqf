@@ -40,3 +40,10 @@ private _add = {
 	, "SLIDER"
 	, [0,1,0.1,2]
 ] call _add;
+
+[
+	"Enabled_Gesture"
+	, "CHECKBOX"
+	, true
+	, true
+] call _add;
