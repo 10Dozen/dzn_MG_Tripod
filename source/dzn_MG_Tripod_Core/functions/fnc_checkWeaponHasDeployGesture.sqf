@@ -28,8 +28,8 @@ private _gestureCached = GVAR(Cache) getVariable [_weapon, nil];
 private _hasGesture = false;
 
 if (isNil "_gestureCached") then {
-	private _gesture = getText (configFile >> "CfgWeapons" >> _weapon >> "dzn_MG_Tripod_deployedGesture");
-	_hasGesture = !(_gesture isEqualTo "");
+	private _gesture = getArray (configFile >> "CfgWeapons" >> _weapon >> "dzn_MG_Tripod_deployedGesture");
+	_hasGesture = !(_gesture isEqualTo []);
 	
 	GVAR(Cache) setVariable [_weapon, [_hasGesture, _gesture]];
 } else {

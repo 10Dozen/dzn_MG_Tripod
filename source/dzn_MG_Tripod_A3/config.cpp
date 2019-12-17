@@ -28,6 +28,8 @@ class dzn_MG_Tripod_Underslot: asdg_UnderSlot
 	};
 };
 
+#define DEPLOYED_GESTURE dzn_MG_Tripod_deployedGesture = "dzn_MG_Tripod_GestureHoldTop1"
+
 class CfgWeapons
 {
 	class Rifle;
@@ -48,6 +50,7 @@ class CfgWeapons
 	// --- ------------------------------
 	class LMG_Mk200_F: Rifle_Long_Base_F
 	{
+		DEPLOYED_GESTURE;
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot: dzn_MG_Tripod_Underslot {};
@@ -58,6 +61,7 @@ class CfgWeapons
 	};
 	class MMG_01_hex_F: MMG_01_base_F
 	{
+		DEPLOYED_GESTURE;
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot: dzn_MG_Tripod_Underslot {};
@@ -69,6 +73,7 @@ class CfgWeapons
 	};
 	class MMG_02_camo_F: MMG_02_base_F 
 	{
+		DEPLOYED_GESTURE;
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot: dzn_MG_Tripod_Underslot {};

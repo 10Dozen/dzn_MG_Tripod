@@ -37,7 +37,11 @@ if (
 ) then {
 	if (_isDeployed) then {
 		hint "Deployed: Apply Gesture animation...";
-		_unit playAction "CUP_GestureHoldPK"; // ([_weapon] call GVAR(fnc_getWeaponDeployGesture));
+		
+		private _gestures = [_weapon] call GVAR(fnc_getWeaponDeployGesture);
+		private _gestureIndex = if (stance player == "PRONE") then { 1 } else { 0 };
+
+		_unit playAction (_gestures # _gestureIndex);
 	} else {
 		hint "Undeployed: Cancel animation...";
 		_unit playAction "gestureNod";

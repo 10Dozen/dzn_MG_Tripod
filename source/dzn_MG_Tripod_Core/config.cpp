@@ -77,29 +77,37 @@ class CfgWeapons
 		{
 			item = "";
 			carry = "dzn_MG_Tripod_Universal_Carry";
-			isCarry = 0;
-			isAttach = 1;
 		};
 	};
 	class dzn_tripod_mg_nato: dzn_MG_Tripod_Universal 
 	{
-		scope = 1; // Backward compatibility for previous used classname
+		scope = 1; // Backward compatibility for previously used classname
 	};
-	class dzn_MG_Tripod_m240mount: dzn_MG_Tripod_Universal
+	class dzn_MG_Tripod_M122A1_M240Mount: dzn_MG_Tripod_Universal
 	{
 		scope=2;
 		author="10Dozen";
 		displayName="$STR_MG_Tripod_M122Tripod_M240";
 		model="\dzn_MG_Tripod\nato_tripod_m122_m240.p3d";
 		picture = "\dzn_MG_Tripod\data\ui\tripod_m122_icon_ca.paa";
+		class dzn_MGTripodInfo 
+		{
+			item = "";
+			carry = "dzn_MG_Tripod_M122A1_M240Mount_Carry";
+		};
 	};
-	class dzn_MG_Tripod_m60mount: dzn_MG_Tripod_Universal
+	class dzn_MG_Tripod_M122A1_M60Mount: dzn_MG_Tripod_Universal
 	{
 		scope=2;
 		author="10Dozen";
 		displayName="$STR_MG_Tripod_M122Tripod_M60";
 		model="\dzn_MG_Tripod\nato_tripod_m122_m60.p3d";
 		picture = "\dzn_MG_Tripod\data\ui\tripod_m122_m60_icon_ca.paa";
+		class dzn_MGTripodInfo 
+		{
+			item = "";
+			carry = "dzn_MG_Tripod_M122A1_M60Mount_Carry";
+		};
 	};
 	
 	// --- Carry item (Launcher slot)
@@ -122,8 +130,28 @@ class CfgWeapons
 		{
 			item = "dzn_MG_Tripod_Universal";
 			carry = "";
-			isCarry = 1;
-			isAttach = 0;
+		};
+	};
+	class dzn_MG_Tripod_M122A1_M240Mount_Carry: dzn_MG_Tripod_Universal_Carry
+	{
+		scope=2;
+		author="10Dozen";
+		displayName="$STR_MG_Tripod_M122Tripod_M240_Carry";
+		class dzn_MGTripodInfo 
+		{
+			item = "dzn_MG_Tripod_M122A1_M240Mount";
+			carry = "";
+		};
+	};
+	class dzn_MG_Tripod_M122A1_M60Mount_Carry: dzn_MG_Tripod_Universal_Carry
+	{
+		scope=2;
+		author="10Dozen";
+		displayName="$STR_MG_Tripod_M122Tripod_M60_Carry";
+		class dzn_MGTripodInfo 
+		{
+			item = "dzn_MG_Tripod_M122A1_M60Mount";
+			carry = "";
 		};
 	};
 };
@@ -203,10 +231,10 @@ class CfgGesturesMale
 	class States
 	{
 		/*
-		 *	HoldType1 	-- default for CUP GMPG (M60, M249, etc) and A3 MGs
+		 *	HoldType1 	-- default for CUP GMPG (M60, M240, etc) and A3 MGs
 		 *	HoldType2	-- CUP M249 solid stock (a bit lower and rotated clockwise)
 		 *	HoldType3	-- CUP M249 Para / PKM/PKP (a bit lower and not rotated)
-		 *	HoldType4	-- a bit higher than default (suitable for IAR type mgs and assault rifles - RPK, MG36, etc).
+		 *	HoldType4	-- somewhere between Type1 and Type 3 (suitable for IAR type mgs and assault rifles - RPK, MG36, etc).
 		 */
 		class dzn_MG_Tripod_GestureHoldType1: Default
 		{

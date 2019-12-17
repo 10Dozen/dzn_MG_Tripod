@@ -29,7 +29,7 @@ private _result = false;
 switch (toUpper _mode) do {
 	case "CHECK_C2A_AVAILABLE": {
 		/**
-			Return TRUE if:
+			Return TRUE if all met:
 				- weapon's bipod slot is free
 				- secondary weapon has excahnge option
 				- this option is compatible with primary weapon "bipod" slot 
@@ -130,7 +130,10 @@ switch (toUpper _mode) do {
 	};
 	case "SWITCH_C2A": {
 		_payload params ["_unit", "_caller", "_actionId", "_arguments"];
-				
+		
+		_unit playAction "MountSide";
+		
+		_unit setAnimSpeedCoef 3;
 		[
 			LOCALIZE_FORMAT_STR("ProgressBar_Mount")
 			, 5
@@ -143,16 +146,25 @@ switch (toUpper _mode) do {
 				(GVAR(Cache) getVariable _sw) params ["_hasAttach","_attachItem"];
 				_unit removeWeapon _sw;
 				_unit addPrimaryWeaponItem _attachItem;
+				_unit setAnimSpeedCoef 1;
 
 				hint "Done";
 			}
-			, { hint "aborted"; }
+			, {
+				(_this # 0) params ["_unit","_actionId"];
+
+				_unit setAnimSpeedCoef 1;
+				_unit switchMove "";
+				hint "aborted";
+			}
 			, [_unit, _actionId]
 		] call CBA_fnc_progressBar;
 	};
 	case "SWITCH_A2C": {
 		_payload params ["_unit", "_caller", "_actionId", "_arguments"];
 
+		_unit playAction "MountSide";
+		_unit setAnimSpeedCoef 3;
 		[
 			LOCALIZE_FORMAT_STR("ProgressBar_Dismount")
 			, 5
@@ -165,10 +177,17 @@ switch (toUpper _mode) do {
 				(GVAR(Cache) getVariable _attach) params ["_hasCarryOption", "_carryItem"];
 				_unit removePrimaryWeaponItem _attach;
 				_unit addWeapon _carryItem;
+				_unit setAnimSpeedCoef 1;
 
 				hint "Done";
 			}
-			, { hint "aborted"; }
+			, {
+				(_this # 0) params ["_unit","_actionId"];
+
+				_unit setAnimSpeedCoef 1;
+				_unit switchMove "";
+				hint "aborted";
+			}
 			, [_unit, _actionId]
 		] call CBA_fnc_progressBar;
 

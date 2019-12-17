@@ -13,6 +13,7 @@ class CfgPatches
 			,"CUP_Weapons_M60E4"
 			,"CUP_Weapons_MG3"
 			,"CUP_Weapons_PK"
+			,"CUP_Weapons_AK"
 			,"dzn_MG_Tripod"
 		};
 		author = "10Dozen";
@@ -24,7 +25,29 @@ class UnderBarrelSlot;
 class CUP_PicatinnyTopMount;
 class CUP_PicatinnySideMount;
 
-#define DEPLOYED_GESTURE dzn_MG_Tripod_deployedGesture = "dzn_MG_Tripod_HoldGMPG"
+
+#define DEPLOYED_GESTURE_GPMG \
+dzn_MG_Tripod_deployedGesture[] = { \
+	"dzn_MG_Tripod_GestureHoldType1" \
+	,"dzn_MG_Tripod_GestureHoldProneType1" \
+}
+
+#define DEPLOYED_GESTURE_M249 \
+dzn_MG_Tripod_deployedGesture[] = { \
+	"dzn_MG_Tripod_GestureHoldType2" \
+	,"dzn_MG_Tripod_GestureHoldProneType2" \
+}
+
+#define DEPLOYED_GESTURE_M249PARA \
+dzn_MG_Tripod_deployedGesture[] = { \
+	"dzn_MG_Tripod_GestureHoldType3" \
+	,"dzn_MG_Tripod_GestureHoldProneType2" \
+}
+
+#define DEPLOYED_GESTURE_IAR \
+	dzn_MG_Tripod_deployedGesture[] = {"dzn_MG_Tripod_GestureHoldType4","dzn_MG_Tripod_GestureHoldProneType1"}
+
+
 
 class CfgWeapons
 {
@@ -46,12 +69,13 @@ class CfgWeapons
 	// --- ------------------------------
 	class CUP_lmg_M240: Rifle_Long_Base_F
 	{
-		DEPLOYED_GESTURE;
+		DEPLOYED_GESTURE_GPMG;
+		
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot: UnderBarrelSlot
 			{
-				compatibleItems[]= {"dzn_MG_Tripod_Universal","dzn_MG_Tripod_m240mount"};
+				compatibleItems[]= {"dzn_MG_Tripod_Universal","dzn_MG_Tripod_M122A1_M240mount"};
 				linkProxy = "\A3\Data_f_Mark\proxies\weapon_slots\UNDERBARREL";
 				
 				iconPinpoint="center";
@@ -66,12 +90,12 @@ class CfgWeapons
 	// --- ------------------------------
 	class CUP_saw_base: Rifle_Long_Base_F
 	{
-		DEPLOYED_GESTURE;
+		DEPLOYED_GESTURE_M249;
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot: UnderBarrelSlot
 			{
-				compatibleItems[]= {"dzn_MG_Tripod_Universal","dzn_MG_Tripod_m240mount"};
+				compatibleItems[]= {"dzn_MG_Tripod_Universal","dzn_MG_Tripod_M122A1_M240mount"};
 				linkProxy = "\A3\Data_f_Mark\proxies\weapon_slots\UNDERBARREL";
 				
 				iconPinpoint="center";
@@ -85,17 +109,17 @@ class CfgWeapons
 	// -- 		Not compatible variants --
 	class CUP_lmg_minimipara: CUP_saw_base
 	{
-		DEPLOYED_GESTURE;
+		DEPLOYED_GESTURE_M249PARA;
 		class WeaponSlotsInfo;
 	};
 	class CUP_lmg_minimi_railed: CUP_lmg_minimipara 
 	{
-		DEPLOYED_GESTURE;
+		DEPLOYED_GESTURE_M249;
 		class WeaponSlotsInfo;
 	};
 	class CUP_lmg_m249_pip4: CUP_lmg_minimi_railed
 	{
-		DEPLOYED_GESTURE;
+		DEPLOYED_GESTURE_M249;
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot {};
@@ -103,22 +127,20 @@ class CfgWeapons
 	};
 	class CUP_lmg_m249_para_gl :CUP_lmg_minimipara
 	{
-		DEPLOYED_GESTURE;
+		dzn_MG_Tripod_deployedGesture[] = {"dzn_MG_Tripod_GestureHoldType2" ,""};		
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot {};
 		};		
-	};
-	// --		End of not compatible variants ---
-	
+	};	
 	class CUP_lmg_L110A1 :CUP_lmg_m249_pip4
 	{
-		DEPLOYED_GESTURE;
+		DEPLOYED_GESTURE_M249PARA;
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot: UnderBarrelSlot
 			{
-				compatibleItems[]= {"dzn_MG_Tripod_Universal","dzn_MG_Tripod_m240mount"};
+				compatibleItems[]= {"dzn_MG_Tripod_Universal","dzn_MG_Tripod_M122A1_M240mount"};
 				linkProxy = "\A3\Data_f_Mark\proxies\weapon_slots\UNDERBARREL";
 				
 				iconPinpoint="center";
@@ -133,12 +155,12 @@ class CfgWeapons
 	// --- ------------------------------
 	class CUP_M60E4_base: Rifle_Long_Base_F
 	{
-		DEPLOYED_GESTURE;
+		DEPLOYED_GESTURE_GPMG;
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot: UnderBarrelSlot
 			{
-				compatibleItems[]= {"dzn_MG_Tripod_Universal","dzn_MG_Tripod_m60mount"};
+				compatibleItems[]= {"dzn_MG_Tripod_Universal","dzn_MG_Tripod_M122A1_M60mount"};
 				linkProxy = "\A3\Data_f_Mark\proxies\weapon_slots\UNDERBARREL";
 				
 				iconPinpoint="center";
@@ -152,7 +174,7 @@ class CfgWeapons
 	// class CUP_lmg_M60E4_norail: CUP_M60E4_base {};
 	class CUP_lmg_M60: CUP_M60E4_base
 	{
-		DEPLOYED_GESTURE;
+		DEPLOYED_GESTURE_GPMG;
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot: UnderBarrelSlot
@@ -167,12 +189,12 @@ class CfgWeapons
 	// --- ------------------------------
 	class CUP_lmg_Mk48_Base: Rifle_Long_Base_F
 	{
-		DEPLOYED_GESTURE;
+		DEPLOYED_GESTURE_M249;
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot: UnderBarrelSlot
 			{ 
-				compatibleItems[]= {"dzn_MG_Tripod_Universal","dzn_MG_Tripod_m240mount"};
+				compatibleItems[]= {"dzn_MG_Tripod_Universal","dzn_MG_Tripod_M122A1_M240mount"};
 				linkProxy = "\A3\Data_f_Mark\proxies\weapon_slots\UNDERBARREL";
 				
 				iconPinpoint="center";
@@ -188,7 +210,7 @@ class CfgWeapons
 	
 	class CUP_lmg_MG3: Rifle_Long_Base_F
 	{
-		DEPLOYED_GESTURE;
+		DEPLOYED_GESTURE_GPMG;
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class CowsSlot;
@@ -207,7 +229,7 @@ class CfgWeapons
 	};
 	class CUP_lmg_MG3_rail: CUP_lmg_MG3 
 	{
-		DEPLOYED_GESTURE;
+		DEPLOYED_GESTURE_GPMG;
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class CowsSlot: CUP_PicatinnyTopMount {};
@@ -229,7 +251,8 @@ class CfgWeapons
 	// --- ------------------------------	
 	class CUP_lmg_PKM: Rifle_Long_Base_F
 	{
-		DEPLOYED_GESTURE;
+		dzn_MG_Tripod_deployedGesture[] = {"dzn_MG_Tripod_GestureHoldType3","dzn_MG_Tripod_GestureHoldProneType1"};
+		
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot: UnderBarrelSlot
@@ -246,4 +269,34 @@ class CfgWeapons
 	};
 	// class CUP_lmg_Pecheneg: CUP_lmg_PKM {};
 	
+	// --- CUP RPK
+	class CUP_arifle_AK_Base;
+	class CUP_arifle_RPK74: CUP_arifle_AK_Base
+	{
+		DEPLOYED_GESTURE_IAR;
+	};
+	class CUP_arifle_RPK74_top_rail: CUP_arifle_RPK74
+	{
+		DEPLOYED_GESTURE_IAR;
+	};
+	class CUP_arifle_RPK74_45: CUP_arifle_RPK74
+	{
+		DEPLOYED_GESTURE_IAR;
+	};
+	class CUP_arifle_RPK74_45_top_rail: CUP_arifle_RPK74
+	{
+		DEPLOYED_GESTURE_IAR;
+	};
+	class CUP_arifle_RPK74M: CUP_arifle_RPK74
+	{
+		DEPLOYED_GESTURE_IAR;
+	};
+	class CUP_arifle_RPK74M_top_rail: CUP_arifle_RPK74M
+	{
+		DEPLOYED_GESTURE_IAR;
+	};
+	class CUP_arifle_RPK74M_railed: CUP_arifle_RPK74M_top_rail
+	{
+		DEPLOYED_GESTURE_IAR;
+	};
 };
