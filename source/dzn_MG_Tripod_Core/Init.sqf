@@ -31,6 +31,8 @@ COMPILE_FUNCTION(fnc_handleDeployedEH);
 COMPILE_FUNCTION(fnc_handleCarryItemExchange);
 COMPILE_FUNCTION(fnc_checkWeaponHasTripod);
 COMPILE_FUNCTION(fnc_affectWeapon);
+COMPILE_FUNCTION(fnc_uiHandleInventory);
+
 COMPILE_FUNCTION(fnc_getWeaponDeployGestures);
 COMPILE_FUNCTION(fnc_checkWeaponHasDeployGestures);
 COMPILE_FUNCTION(fnc_selectGesture);

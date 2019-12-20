@@ -55,6 +55,8 @@ private _fnc_removeAction = {
 private _w = _newLoadout # 0 # 0;
 private _sw = if (_newLoadout # 1 isEqualTo []) then { "" } else { _newLoadout # 1 # 0 };
 
+dzn_W = _w;
+
 private _hasGesture 		= [_w] call GVAR(fnc_checkWeaponHasDeployGestures);
 private _hasEHs 			= (_unit getVariable [SVAR(DeployedEH), -1] >= 0 && _unit getVariable [SVAR(ReloadedEH), -1] >= 0);
 private _hasActionC2A 		= _unit getVariable [SVAR(ActionC2A), -1] >= 0;

@@ -22,7 +22,9 @@ Author:
 	10Dozen
 ---------------------------------------------------------------------------- */
 
-params ["_weapon", ["_useCacheOnly", true]];
+params [["_weapon",""], ["_useCacheOnly", true]];
+
+if (_weapon == "") exitWith { "" };
 
 if (!_useCacheOnly) then {
 	// --- Trigger cache creation

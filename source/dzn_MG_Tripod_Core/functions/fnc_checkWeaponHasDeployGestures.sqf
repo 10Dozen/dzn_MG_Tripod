@@ -22,7 +22,9 @@ Author:
 	10Dozen
 ---------------------------------------------------------------------------- */
 
-params ["_weapon"];
+params [["_weapon",""]];
+
+if (_weapon == "") exitWith { false };
 
 private _gestureCached = GVAR(Cache) getVariable [_weapon, nil];
 private _hasGesture = false;
