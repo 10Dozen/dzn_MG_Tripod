@@ -31,19 +31,16 @@ params ["_unit", "_isDeployed"];
 private _weapon = primaryWeapon _unit;
 if (_weapon != currentWeapon _unit) exitWith {};
 
+private _isGestureEnabled = GVAR(Enabled_StandGesture) || GVAR(Enabled_CrouchGesture) || GVAR(Enabled_ProneGesture);
 if (
-	GVAR(Enabled_Gesture) 
-	&& { [_weapon] call GVAR(fnc_checkWeaponHasDeployGesture) }
+	_isGestureEnabled
+	&& { [_weapon] call GVAR(fnc_checkWeaponHasDeployGestures) }
 ) then {
-	if (_isDeployed) then {
-		hint "Deployed: Apply Gesture animation...";
-		
-		private _gestures = [_weapon] call GVAR(fnc_getWeaponDeployGesture);
-		private _gestureIndex = if (stance player == "PRONE") then { 1 } else { 0 };
 
-		_unit playAction (_gestures # _gestureIndex);
+	if (_isDeployed) then {
+		private _guesture = [_unit, _weapon] call GVAR(fnc_selectGesture);
+		_unit playAction _guesture;
 	} else {
-		hint "Undeployed: Cancel animation...";
 		_unit playAction "gestureNod";
 	};
 };

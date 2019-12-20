@@ -175,7 +175,6 @@ class CfgMovesBasic
 		dzn_MG_Tripod_GestureHoldProneType2		= "dzn_MG_Tripod_GestureHoldProneType2";
 		dzn_MG_Tripod_GestureHoldCrouchType1	= "dzn_MG_Tripod_GestureHoldCrouchType1";
 		dzn_MG_Tripod_GestureHoldCrouchType2	= "dzn_MG_Tripod_GestureHoldCrouchType2";
-		dzn_MG_Tripod_GestureHoldCrouchType3	= "dzn_MG_Tripod_GestureHoldCrouchType3";
 	};
 	class Actions
 	{
@@ -277,10 +276,12 @@ class CfgGesturesMale
 		GESTURE_MACRO(HoldType3);
 		GESTURE_MACRO(HoldType4);
 		
+		/*
+		 *	HoldCrouchType1 	-- default for CUP GMPG (M60, M240, etc) and A3 MGs
+		 *	HoldCrouchType2		-- CUP M249 (a bit lower and closer to shoulder)
+		 */
 		GESTURE_MACRO(HoldCrouchType1);
 		GESTURE_MACRO(HoldCrouchType2);
-		
-		
 		
 		/*
 		 *	HoldProneType1 	-- default prone (for all mgs, both CUP and A3)
@@ -312,8 +313,8 @@ class CfgGesturesMale
 	Weapon					| Anim(Good)					| Prone						| Crouch
 	-----------------------------------------------------------------------------------------------------------------------------------
 	L110/M249Para			| HoldType3						| ProneType2				| CrouchType2
-	M240					| HoldType1 					| 							| CrouchType1
-	L86						| -- need special anim --		| 							| 
+	M240					| HoldType1 					| ProneType1				| CrouchType1
+	L86						| -- need special anim --		
 	M249					| HoldType2						| ProneType2				| CrouchType2
 	M249 PIP Stock			| HoldType2						| ProneType2				| CrouchType2
 	M60						| HoldType1						| ProneType1				| CrouchType2

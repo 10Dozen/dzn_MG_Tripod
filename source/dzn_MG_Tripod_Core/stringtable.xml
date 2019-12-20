@@ -26,12 +26,27 @@
 				<Original>Custom recoil coefficient when machine gun deployed using tripod</Original>
 			</Key>
 			
-			<Key ID="STR_MG_Tripod_Enabled_Gesture">
-				<Original>Switch hand anim on deploy</Original>
+			<Key ID="STR_MG_Tripod_Enabled_StandGesture">
+				<Original>Switch hand anim on deploy (Stand)</Original>
 			</Key>
-			<Key ID="STR_MG_Tripod_Enabled_Gesture_desc">
-				<Original>Enables animation switch when weapon deployed (MGs)</Original>
+			<Key ID="STR_MG_Tripod_Enabled_StandGesture_desc">
+				<Original>Enables animation switch when weapon deployed (MGs) while standing</Original>
 			</Key>
+			
+			<Key ID="STR_MG_Tripod_Enabled_CrouchGesture">
+				<Original>Switch hand anim on deploy (Crouch)</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_Enabled_CrouchGesture_desc">
+				<Original>Enables animation switch when weapon deployed (MGs) while crouching</Original>
+			</Key>
+
+			<Key ID="STR_MG_Tripod_Enabled_ProneGesture">
+				<Original>Switch hand anim on deploy (Prone)</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_Enabled_ProneGesture_desc">
+				<Original>Enables animation switch when weapon deployed (MGs) while prone</Original>
+			</Key>
+			
 		</Container>
 		
 		<Container name="Items">
@@ -54,7 +69,22 @@
 			<Key ID="STR_MG_Tripod_M122Tripod_M60_Carry">
 				<Original>M122 MG Tripod (Packed/M60 mount)</Original>
 			</Key>
-			
+		</Container>
+
+		<Container name="InGame">
+			<Key ID="STR_MG_Tripod_Action_Mount">
+				<Original>Mount %1</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_Action_Dismount">
+				<Original>Dismount %1</Original>
+			</Key>
+
+			<Key ID="STR_MG_Tripod_ProgressBar_Mount">
+				<Original>Mounting tripod</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_ProgressBar_Dismount">
+				<Original>Dismounting tripod</Original>
+			</Key>
 		</Container>
 	</Package>
 </Project>

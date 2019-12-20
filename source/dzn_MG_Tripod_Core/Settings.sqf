@@ -42,7 +42,21 @@ private _add = {
 ] call _add;
 
 [
-	"Enabled_Gesture"
+	"Enabled_StandGesture"
+	, "CHECKBOX"
+	, true
+	, true
+] call _add;
+
+[
+	"Enabled_CrouchGesture"
+	, "CHECKBOX"
+	, true
+	, true
+] call _add;
+
+[
+	"Enabled_ProneGesture"
 	, "CHECKBOX"
 	, true
 	, true

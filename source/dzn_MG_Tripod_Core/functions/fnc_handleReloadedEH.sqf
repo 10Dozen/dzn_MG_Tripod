@@ -31,17 +31,15 @@ params ["_unit", "_reloadedWeapon"];
 private _weapon = primaryWeapon _unit;
 if (_weapon != _reloadedWeapon) exitWith {};
 
-if (
-	GVAR(Enabled_Gesture) 
-	&& { 
-		[_weapon] call GVAR(fnc_checkWeaponHasDeployGesture) 
-		&& isWeaponDeployed _unit
-	}
-) then {
-	hint "Re-apply animation...";
-	
-	private _gestures = [_weapon] call GVAR(fnc_getWeaponDeployGesture);
-	private _gestureIndex = if (stance player == "PRONE") then { 1 } else { 0 };
+private _isGestureEnabled = GVAR(Enabled_StandGesture) || GVAR(Enabled_CrouchGesture) || GVAR(Enabled_ProneGesture);
 
-	_unit playAction (_gestures # _gestureIndex);
+if (
+	_isGestureEnabled
+	&& { 
+		isWeaponDeployed _unit
+		&& [_weapon] call GVAR(fnc_checkWeaponHasDeployGestures) 
+	}
+) then {	
+	private _guesture = [_unit, _weapon] call GVAR(fnc_selectGesture);
+	_unit playAction _guesture;
 };
