@@ -1,4 +1,5 @@
 #include "..\macro.hpp"
+#define SELF GVAR(fnc_handleCarryItemExchange)
 
 /* ----------------------------------------------------------------------------
 Function: dzn_MG_Tripod_fnc_handleCarryItemExchange
@@ -21,6 +22,8 @@ Examples:
 Author:
 	10Dozen
 ---------------------------------------------------------------------------- */
+#define ANIM_CROUCH "amovpknlmstpsraswrfldnon"
+#define ANIM_PRONE "amovppnemstpsraswrfldnon"
 
 params ["_mode", ["_payload", []]];
 
@@ -128,12 +131,49 @@ switch (toUpper _mode) do {
 
 		_result = _hasCarryOption;
 	};
+	case "CAN_SWITCH": {
+		_payload params ["_unit"];
+
+		private _v = vehicle _unit;
+
+		// --- Allow if player is not in the car
+		_result = (_v == _unit);
+	};
+	case "PREPARE_STANCE": {
+		_payload params ["_unit"];
+
+		if (vehicle _unit != _unit) exitWith { /* In vehicle */ };
+
+		// Undeploy if currently deployed
+		if (isWeaponDeployed _unit) then {
+			if (stance _unit == "PRONE") then {
+				_unit playMoveNow ANIM_PRONE;
+			} else {
+				_unit playMoveNow ANIM_CROUCH;
+			};
+		};
+
+		uiSleep 0.25;
+
+		// Switch to crouch position that allows tranfer of animation
+		if (stance _unit == "PRONE") then {
+			_unit playMoveNow ANIM_CROUCH;
+			waitUntil { animationState _unit == ANIM_CROUCH };
+		};
+	};
 	case "SWITCH_C2A": {
 		_payload params ["_unit", "_caller", "_actionId", "_arguments"];
+
+		if !(["CAN_SWITCH",_unit] call SELF) exitWith {
+			hint "Can't mount tripod while in vehicle";
+		};
 		
+		["PREPARE_STANCE", [_unit]] call SELF;
+
+		private _preAnimStance = animationState _unit;
 		_unit playAction "MountSide";
-		
 		_unit setAnimSpeedCoef 3;
+
 		[
 			LOCALIZE_FORMAT_STR("ProgressBar_Mount")
 			, 5
@@ -142,29 +182,36 @@ switch (toUpper _mode) do {
 				(_this # 0) params ["_unit","_actionId"];
 				_unit removeAction _actionId;
 			
-				private _sw = secondaryWeapon player;
+				private _sw = secondaryWeapon _unit;
 				(GVAR(Cache) getVariable _sw) params ["_hasAttach","_attachItem"];
 				_unit removeWeapon _sw;
 				_unit addPrimaryWeaponItem _attachItem;
-				_unit setAnimSpeedCoef 1;
+				_unit setAnimSpeedCoef 1;ce;
 
 				hint "Done";
 			}
 			, {
-				(_this # 0) params ["_unit","_actionId"];
+				(_this # 0) params ["_unit","_actionId","_preAnimStance"];
 
 				_unit setAnimSpeedCoef 1;
-				_unit switchMove "";
-				hint "aborted";
+				_unit switchMove _preAnimStance;
+				hint "Aborted";
 			}
-			, [_unit, _actionId]
+			, [_unit, _actionId, _preAnimStance]
 		] call CBA_fnc_progressBar;
 	};
 	case "SWITCH_A2C": {
 		_payload params ["_unit", "_caller", "_actionId", "_arguments"];
 
+		if !(["CAN_SWITCH",_unit] call SELF) exitWith {
+			hint "Can't dismount tripod while in vehicle";
+		};
+		["PREPARE_STANCE", [_unit]] call SELF;
+
+		private _preAnimStance = animationState _unit;
 		_unit playAction "MountSide";
 		_unit setAnimSpeedCoef 3;
+
 		[
 			LOCALIZE_FORMAT_STR("ProgressBar_Dismount")
 			, 5
@@ -182,15 +229,14 @@ switch (toUpper _mode) do {
 				hint "Done";
 			}
 			, {
-				(_this # 0) params ["_unit","_actionId"];
+				(_this # 0) params ["_unit","_actionId","_preAnimStance"];
 
 				_unit setAnimSpeedCoef 1;
-				_unit switchMove "";
-				hint "aborted";
+				_unit switchMove _preAnimStance;
+				hint "Aborted";
 			}
-			, [_unit, _actionId]
+			, [_unit, _actionId, _preAnimStance]
 		] call CBA_fnc_progressBar;
-
 	};
 };
 

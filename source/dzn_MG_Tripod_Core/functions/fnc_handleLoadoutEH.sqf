@@ -41,6 +41,11 @@ Author:
 
 params ["_unit", "_newLoadout"];
 
+private _fnc_compileActionName = {
+	params ["_msg", "_item"];
+
+	format [_msg, getText (configFile >> "CfgWeapons" >> _item >> "displayName")]
+};
 private _fnc_removeAction = {
 	params ["_unit", "_actionName"];
 	_unit removeAction (_unit getVariable _actionName);
@@ -84,11 +89,8 @@ if (_hasGesture) then {
 			(GVAR(Cache) getVariable _sw) params ["_hasAttach","_attachItem"];
 
 			private _actionID = _unit addAction [
-				format [
-					LOCALIZE_FORMAT_STR("Action_Mount")
-					, getText (configFile >> "CfgWeapons" >> _attachItem >> "displayName")
-				]
-				, { ["SWITCH_C2A", _this] call GVAR(fnc_handleCarryItemExchange); }
+				[LOCALIZE_FORMAT_STR("Action_Mount"), _attachItem] call _fnc_compileActionName
+				, { ["SWITCH_C2A", _this] spawn GVAR(fnc_handleCarryItemExchange); }
 			];
 			_unit setVariable [SVAR(ActionC2A), _actionID];
 
@@ -106,11 +108,8 @@ if (_hasGesture) then {
 		if (!_hasActionA2C) then {
 			(GVAR(Cache) getVariable ((primaryWeaponItems _unit) # 3)) params ["_hasCarryOption", "_carryItem"];
 			private _actionID = _unit addAction [
-				format [
-					LOCALIZE_FORMAT_STR("Action_Dismount")
-					, getText (configFile >> "CfgWeapons" >> _carryItem >> "displayName")
-				]
-				, { ["SWITCH_A2C", _this] call GVAR(fnc_handleCarryItemExchange); }
+				[LOCALIZE_FORMAT_STR("Action_Dismount"), _carryItem] call _fnc_compileActionName
+				, { ["SWITCH_A2C", _this] spawn GVAR(fnc_handleCarryItemExchange); }
 			];
 			_unit setVariable [SVAR(ActionA2C), _actionID];
 		};

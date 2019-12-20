@@ -243,7 +243,7 @@ class CfgWeapons
 	// --- ------------------------------	
 	class CUP_lmg_PKM: Rifle_Long_Base_F
 	{
-		dzn_MG_Tripod_deployedGesture[] = {"dzn_MG_Tripod_GestureHoldType3","dzn_MG_Tripod_GestureHoldProneType1"};
+		dzn_MG_Tripod_deployedGesture[] = {"dzn_MG_Tripod_GestureHoldType3","dzn_MG_Tripod_GestureHoldCrouchType2","dzn_MG_Tripod_GestureHoldProneType1"};
 		
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
