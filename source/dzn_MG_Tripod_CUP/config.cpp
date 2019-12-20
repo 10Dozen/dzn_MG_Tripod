@@ -27,25 +27,17 @@ class CUP_PicatinnySideMount;
 
 
 #define DEPLOYED_GESTURE_GPMG \
-dzn_MG_Tripod_deployedGesture[] = { \
-	"dzn_MG_Tripod_GestureHoldType1" \
-	,"dzn_MG_Tripod_GestureHoldProneType1" \
-}
+	dzn_MG_Tripod_deployedGesture[] = {"dzn_MG_Tripod_GestureHoldType1","dzn_MG_Tripod_GestureHoldCrouchType1","dzn_MG_Tripod_GestureHoldProneType1"}
 
 #define DEPLOYED_GESTURE_M249 \
-dzn_MG_Tripod_deployedGesture[] = { \
-	"dzn_MG_Tripod_GestureHoldType2" \
-	,"dzn_MG_Tripod_GestureHoldProneType2" \
-}
+	dzn_MG_Tripod_deployedGesture[] = {"dzn_MG_Tripod_GestureHoldType2","dzn_MG_Tripod_GestureHoldCrouchType2","dzn_MG_Tripod_GestureHoldProneType2"}
 
 #define DEPLOYED_GESTURE_M249PARA \
-dzn_MG_Tripod_deployedGesture[] = { \
-	"dzn_MG_Tripod_GestureHoldType3" \
-	,"dzn_MG_Tripod_GestureHoldProneType2" \
-}
+	dzn_MG_Tripod_deployedGesture[] = {"dzn_MG_Tripod_GestureHoldType3","dzn_MG_Tripod_GestureHoldCrouchType2","dzn_MG_Tripod_GestureHoldProneType2"}
 
 #define DEPLOYED_GESTURE_IAR \
-	dzn_MG_Tripod_deployedGesture[] = {"dzn_MG_Tripod_GestureHoldType4","dzn_MG_Tripod_GestureHoldProneType1"}
+	dzn_MG_Tripod_deployedGesture[] = {"","","dzn_MG_Tripod_GestureHoldProneType1"}
+// dzn_MG_Tripod_deployedGesture[] = {"dzn_MG_Tripod_GestureHoldType4","dzn_MG_Tripod_GestureHoldCrouchType1","dzn_MG_Tripod_GestureHoldProneType1"}
 
 
 
@@ -127,7 +119,7 @@ class CfgWeapons
 	};
 	class CUP_lmg_m249_para_gl :CUP_lmg_minimipara
 	{
-		dzn_MG_Tripod_deployedGesture[] = {"dzn_MG_Tripod_GestureHoldType2" ,""};		
+		dzn_MG_Tripod_deployedGesture[] = {};		
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot {};
