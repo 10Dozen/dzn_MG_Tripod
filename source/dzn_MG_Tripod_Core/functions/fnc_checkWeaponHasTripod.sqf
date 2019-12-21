@@ -24,7 +24,9 @@ Author:
 
 params ["_unit"];
 
-private _items = primaryWeaponItems _unit;
+private _bipodItem = primaryWeaponItems _unit # 3;
+if (_bipodItem == "") exitWith { false };
+
 private _tripods = GVAR(Cache) getVariable SVAR(TripodClasses);
 
-(_items findIf { _x in _tripods } > 0)
+(_tripods findIf { _x == _bipodItem } > -1)

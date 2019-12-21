@@ -16,7 +16,7 @@ Returns:
 
 Examples:
     (begin example)
-		["INIT"] call dzn_MG_Tripod_fnc_uiHandleInventory; 
+		["SET"] call dzn_MG_Tripod_fnc_uiHandleInventory; 
     (end)
 
 Author:
@@ -32,7 +32,7 @@ params ["_mode", ["_payload", []]];
 private _result = false;
 
 switch (toUpper _mode) do {
-	case "INIT": {
+	case "SET": {
 		if (!isNil SVAR(handleInventory)) exitWith {};
 
 		GVAR(handleInventory) = true;
@@ -44,8 +44,13 @@ switch (toUpper _mode) do {
 			"InventoryClosed"
 			, { ["HANDLE_CLOSED"] spawn SELF; }
 		];
+
+		// --- Handles inventroy is already opened during execution
+		if (!isNull INV_DISPLAY) then {
+			["HANDLE_OPENED"] spawn SELF;
+		};
 	};
-	case "RESET": {
+	case "CLEAR": {
 		if (isNil SVAR(handleInventory)) exitWith {};
 
 		["HANDLE_CLOSED"] call SELF;

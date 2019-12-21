@@ -6,7 +6,8 @@ Function: dzn_MG_Tripod_fnc_handleLoadoutEH
 Description:
 	Handles Loadout event: 
 		- Verifies that player has primary weapon is compatible with tripods and has gesture anim
-		- Add or remove Deployed & Reloaded EHs if needed
+		- Adds or removes Deployed & Reloaded EHs if needed
+		- Adds or removes tripod carry-to-attach actions and Inventory EH
 	
 	Assumptions:
 		- All MGs compatible with tripod MUST HAVE `dzn_MGTripod_deployedGesture` property
@@ -33,36 +34,15 @@ Author:
 	10Dozen
 ---------------------------------------------------------------------------- */
 
-/**
-	TODO:
-		- [bug] actions added each time loadout changed!
-
- */
-
 params ["_unit", "_newLoadout"];
-
-private _fnc_compileActionName = {
-	params ["_msg", "_item"];
-
-	format [_msg, getText (configFile >> "CfgWeapons" >> _item >> "displayName")]
-};
-private _fnc_removeAction = {
-	params ["_unit", "_actionName"];
-	_unit removeAction (_unit getVariable _actionName);
-	_unit setVariable [_actionName, -1];
-};
 
 private _w = _newLoadout # 0 # 0;
 private _sw = if (_newLoadout # 1 isEqualTo []) then { "" } else { _newLoadout # 1 # 0 };
-
-dzn_W = _w;
 
 private _hasGesture 		= [_w] call GVAR(fnc_checkWeaponHasDeployGestures);
 private _hasEHs 			= (_unit getVariable [SVAR(DeployedEH), -1] >= 0 && _unit getVariable [SVAR(ReloadedEH), -1] >= 0);
 private _hasActionC2A 		= _unit getVariable [SVAR(ActionC2A), -1] >= 0;
 private _hasActionA2C 		= _unit getVariable [SVAR(ActionA2C), -1] >= 0;
-
-dzn_LOG_LoadoutEH = ["Wpn:",_w, "SecWpn:", _sw, "Has gestyre:", _hasGesture, "Has DeployEH:", _hasEHs, "Has C2A & A2C actions:", _hasActionC2A, _hasActionA2C];
 
 if (_hasGesture) then {
 	
@@ -81,51 +61,63 @@ if (_hasGesture) then {
 			SVAR(ReloadedEH)
 			, _unit addEventHandler ["Reloaded", { _this call GVAR(fnc_handleReloadedEH) }]
 		];
-
-		dzn_LOG_LoadoutEH pushBack "Adding Deployed & Reloaded EHs";
 	};
 
+	private _C2A_Available = ["CHECK_C2A_AVAILABLE", [_unit, _w, _sw]] call GVAR(fnc_handleCarryItemExchange);
+	private _A2C_Available = ["CHECK_A2C_AVAILABLE", [_unit, _w, _sw]] call GVAR(fnc_handleCarryItemExchange);
+
 	// Handle Carry2Attach actions availability
-	if (["CHECK_C2A_AVAILABLE", [_unit, _w, _sw]] call GVAR(fnc_handleCarryItemExchange)) then {
+	if (_C2A_Available) then {
 		if (!_hasActionC2A) then {
 			(GVAR(Cache) getVariable _sw) params ["_hasAttach","_attachItem"];
 
-			private _actionID = _unit addAction [
-				[LOCALIZE_FORMAT_STR("Action_Mount"), _attachItem] call _fnc_compileActionName
+			[
+				_unit
+				, SVAR(ActionC2A)
+				, LOCALIZE_FORMAT_STR("Action_Mount")
+				, _attachItem
 				, { ["SWITCH_C2A", _this] spawn GVAR(fnc_handleCarryItemExchange); }
-			];
-			_unit setVariable [SVAR(ActionC2A), _actionID];
-
-			dzn_LOG_LoadoutEH pushBack "Adding C2A action";
+			] call GVAR(fnc_addTripodAction);
 		};
 	} else {
 		if (_hasActionC2A) then { 
-			[_unit, SVAR(ActionC2A)] call _fnc_removeAction; 
-			dzn_LOG_LoadoutEH pushBack "Removing C2A action";
+			[_unit, SVAR(ActionC2A)] call GVAR(fnc_removeTripodAction);
 		};
 	};
 
 	// Handle Attach2Carry actions availability
-	if (["CHECK_A2C_AVAILABLE", [_unit, _w, _sw]] call GVAR(fnc_handleCarryItemExchange)) then {
+	if (_A2C_Available) then {
 		if (!_hasActionA2C) then {
 			(GVAR(Cache) getVariable ((primaryWeaponItems _unit) # 3)) params ["_hasCarryOption", "_carryItem"];
-			private _actionID = _unit addAction [
-				[LOCALIZE_FORMAT_STR("Action_Dismount"), _carryItem] call _fnc_compileActionName
-				, { ["SWITCH_A2C", _this] spawn GVAR(fnc_handleCarryItemExchange); }
-			];
-			_unit setVariable [SVAR(ActionA2C), _actionID];
-		};
 
-		dzn_LOG_LoadoutEH pushBack "Adding A2C action";
+			[
+				_unit
+				, SVAR(ActionA2C)
+				, LOCALIZE_FORMAT_STR("Action_Dismount")
+				, _carryItem
+				, { ["SWITCH_A2C", _this] spawn GVAR(fnc_handleCarryItemExchange); }
+			] call GVAR(fnc_addTripodAction);
+		};
+		
+		// --- Add inventory handler (as tripod installed and we need to ensure that it can't be dropped accidentally)
+		["SET"] call GVAR(fnc_uiHandleInventory);
 	} else {
 		if (_hasActionA2C) then {
-			[_unit, SVAR(ActionA2C)] call _fnc_removeAction;
-			dzn_LOG_LoadoutEH pushBack "Removing A2C action";
+			[_unit, SVAR(ActionA2C)] call GVAR(fnc_removeTripodAction);
+		};
+
+		// --- Check that tripod installed
+		if ([_unit] call GVAR(fnc_checkWeaponHasTripod)) then {
+			// --- Set inventory EH anew (as tripod installed, but A2C is blocked because of Launcher slot is occupied); "SET" won't override EHs
+			["SET"] call GVAR(fnc_uiHandleInventory);
+		} else {
+			// --- Remove inventory handler (as tripod was removed and slot should be available for other bipod items)
+			["CLEAR"] call GVAR(fnc_uiHandleInventory);
 		};
 	};
-
 } else {
-	
+	// --- Weapon has no Gesture (and tripod compatibility) -- remove all handlers and actions:
+
 	// --- Remove Deployed & Reloaded EHs
 	if (_hasEHs) then {
 		_unit removeEventHandler ["WeaponDeployed", _unit getVariable SVAR(DeployedEH)];
@@ -133,13 +125,14 @@ if (_hasGesture) then {
 		
 		_unit setVariable [SVAR(DeployedEH), -1];
 		_unit setVariable [SVAR(ReloadedEH), -1];
-
-		dzn_LOG_LoadoutEH pushBack "Removing Deployed & Reloaded EHs";
 	};
 	
 	// --- Remove L2A / A2L Conversion actions
-	if (_hasActionC2A) then { [_unit, SVAR(ActionC2A)] call _fnc_removeAction; dzn_LOG_LoadoutEH pushBack "Removing C2A action"; };
-	if (_hasActionA2C) then { [_unit, SVAR(ActionA2C)] call _fnc_removeAction; dzn_LOG_LoadoutEH pushBack "Removing A2C action"; };
+	if (_hasActionC2A) then { [_unit, SVAR(ActionC2A)] call GVAR(fnc_removeTripodAction); };
+	if (_hasActionA2C) then { [_unit, SVAR(ActionA2C)] call GVAR(fnc_removeTripodAction); };
+
+	// --- Remove inventory EHs
+	["CLEAR"] call GVAR(fnc_uiHandleInventory);
 };
 
 
