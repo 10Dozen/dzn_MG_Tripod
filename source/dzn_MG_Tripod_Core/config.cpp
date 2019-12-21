@@ -32,14 +32,14 @@ class Extended_PostInit_EventHandlers
 {
 	class dzn_MG_Tripod
 	{
-		// init = call compile preprocessFileLineNumbers "\dzn_MG_Tripod_Core\Init.sqf";
+		init = call compile preprocessFileLineNumbers "\dzn_MG_Tripod_Core\Init.sqf";
 	};
 };
 class Extended_PreInit_EventHandlers
 {
 	class dzn_MG_Tripod
 	{
-		// init = call compile preprocessFileLineNumbers "\dzn_MG_Tripod_Core\Settings.sqf";
+		init = call compile preprocessFileLineNumbers "\dzn_MG_Tripod_Core\Settings.sqf";
 	};
 };
 
@@ -74,20 +74,12 @@ class CfgWeapons
 		};
 		inertia = 2; // 1.25; 
 		
-		class dzn_MGTripodInfo 
-		{
-			item = "";
-			carry = "dzn_MG_Tripod_Universal_Carry";
-		};
+		dzn_MG_Tripod_CarryItem = "dzn_MG_Tripod_Universal_Carry";
 	};
 	class dzn_tripod_mg_nato: dzn_MG_Tripod_Universal 
 	{
 		scope = 1; // Backward compatibility for previously used classname
-		class dzn_MGTripodInfo 
-		{
-			item = "";
-			carry = "dzn_MG_Tripod_Universal_Carry";
-		};
+		dzn_MG_Tripod_CarryItem = "dzn_MG_Tripod_Universal_Carry";
 	};
 	class dzn_MG_Tripod_M122A1_M240Mount: dzn_MG_Tripod_Universal
 	{
@@ -96,11 +88,7 @@ class CfgWeapons
 		displayName="$STR_MG_Tripod_M122Tripod_M240";
 		model="\dzn_MG_Tripod\nato_tripod_m122_m240.p3d";
 		picture = "\dzn_MG_Tripod\data\ui\tripod_m122_icon_ca.paa";
-		class dzn_MGTripodInfo 
-		{
-			item = "";
-			carry = "dzn_MG_Tripod_M122A1_M240Mount_Carry";
-		};
+		dzn_MG_Tripod_CarryItem = "dzn_MG_Tripod_M122A1_M240Mount_Carry";
 	};
 	class dzn_MG_Tripod_M122A1_M60Mount: dzn_MG_Tripod_Universal
 	{
@@ -109,11 +97,7 @@ class CfgWeapons
 		displayName="$STR_MG_Tripod_M122Tripod_M60";
 		model="\dzn_MG_Tripod\nato_tripod_m122_m60.p3d";
 		picture = "\dzn_MG_Tripod\data\ui\tripod_m122_m60_icon_ca.paa";
-		class dzn_MGTripodInfo 
-		{
-			item = "";
-			carry = "dzn_MG_Tripod_M122A1_M60Mount_Carry";
-		};
+		dzn_MG_Tripod_CarryItem = "dzn_MG_Tripod_M122A1_M60Mount_Carry";
 	};
 	
 	// --- Carry item (Launcher slot)
@@ -123,7 +107,7 @@ class CfgWeapons
 		author="10Dozen";
 		displayName="$STR_MG_Tripod_MGUniversalTripod";
 		picture = "\dzn_MG_Tripod\data\ui\tripod_m122_icon_ca.paa";
-		model="\dzn_MG_Tripod\nato_tripod_m122_universal.p3d";
+		model="\dzn_MG_Tripod\nato_tripod_m122_carry.p3d";
 		muzzles[] = {};
 		magazines[] = {};
 		modes[] = {};
@@ -131,34 +115,21 @@ class CfgWeapons
 			allowedSlots[] = {};
 			mass = 165;
 		};
-		
-		class dzn_MGTripodInfo 
-		{
-			item = "dzn_MG_Tripod_Universal";
-			carry = "";
-		};
+		dzn_MG_Tripod_AttachItem = "dzn_MG_Tripod_Universal";
 	};
 	class dzn_MG_Tripod_M122A1_M240Mount_Carry: dzn_MG_Tripod_Universal_Carry
 	{
 		scope=2;
 		author="10Dozen";
 		displayName="$STR_MG_Tripod_M122Tripod_M240_Carry";
-		class dzn_MGTripodInfo 
-		{
-			item = "dzn_MG_Tripod_M122A1_M240Mount";
-			carry = "";
-		};
+		dzn_MG_Tripod_AttachItem = "dzn_MG_Tripod_M122A1_M240Mount";
 	};
 	class dzn_MG_Tripod_M122A1_M60Mount_Carry: dzn_MG_Tripod_Universal_Carry
 	{
 		scope=2;
 		author="10Dozen";
 		displayName="$STR_MG_Tripod_M122Tripod_M60_Carry";
-		class dzn_MGTripodInfo 
-		{
-			item = "dzn_MG_Tripod_M122A1_M60Mount";
-			carry = "";
-		};
+		dzn_MG_Tripod_AttachItem = "dzn_MG_Tripod_M122A1_M60Mount";
 	};
 };
 
@@ -330,6 +301,11 @@ class CfgGesturesMale
 	RPK12					| HoldType1						| ProneType1				| CrouchType1 (but ok w/o)
 	Zafir					| HoldType1						| ProneType1				| CrouchType1
 	Mk200					| HoldType1						| ProneType1				| CrouchType1
+	
+	arifle_MX_SW_F			| -								|  ProneType2				| -
+	LMG_03_F (LIM85)		| HoldType3						|  ProneType1				| CrouchType2
+	arifle_RPK12_F			| -								|  ProneType1				| -
+	arifle_MXM_F			| -								|  ProneType1				| -
 */
 
 /*	

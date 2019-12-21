@@ -267,6 +267,7 @@ class CfgWeapons
 	{
 		DEPLOYED_GESTURE_IAR;
 	};
+	/*
 	class CUP_arifle_RPK74_top_rail: CUP_arifle_RPK74
 	{
 		DEPLOYED_GESTURE_IAR;
@@ -291,4 +292,5 @@ class CfgWeapons
 	{
 		DEPLOYED_GESTURE_IAR;
 	};
+	*/
 };

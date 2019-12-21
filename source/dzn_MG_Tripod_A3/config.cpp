@@ -8,6 +8,7 @@ class CfgPatches
 		requiredAddons[] = {
 			"CBA_MAIN"
 			,"CBA_jr"
+			,"Weapons_f"
 			,"dzn_MG_Tripod"
 		};
 		author = "10Dozen";
@@ -55,6 +56,15 @@ class CfgWeapons
 	
 	// --- Vanilla MGs
 	// --- ------------------------------
+	class arifle_MX_Base_F;
+	class arifle_MX_SW_F: arifle_MX_Base_F
+	{
+		dzn_MG_Tripod_deployedGesture[] = {"","","dzn_MG_Tripod_GestureHoldProneType2"}
+	};
+	class arifle_MXM_F: arifle_MX_Base_F {
+		DEPLOYED_GESTURE_IAR;
+	};
+	
 	class LMG_Mk200_F: Rifle_Long_Base_F
 	{
 		DEPLOYED_GESTURE_GPMG;
@@ -92,4 +102,20 @@ class CfgWeapons
 		};
 	};
 
+	class LMG_03_base_F;
+	class LMG_03_F: LMG_03_base_F
+	{
+		DEPLOYED_GESTURE_M249PARA;
+	};
+	
+	class arifle_RPK12_base_F;
+    class arifle_RPK12_F: arifle_RPK12_base_F {
+        DEPLOYED_GESTURE_IAR;
+    };
+    class arifle_RPK12_lush_F: arifle_RPK12_base_F {
+        DEPLOYED_GESTURE_IAR;
+    };
+    class arifle_RPK12_arid_F: arifle_RPK12_base_F {
+        DEPLOYED_GESTURE_IAR;
+    };
 };

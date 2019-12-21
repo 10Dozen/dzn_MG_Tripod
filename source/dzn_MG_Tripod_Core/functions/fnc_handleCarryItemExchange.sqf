@@ -51,7 +51,7 @@ switch (toUpper _mode) do {
 		private _cachedAttachOptionInfo = GVAR(Cache) getVariable _secondaryWeapon;
 		if (isNil "_cachedAttachOptionInfo") then {
 			// Read from config and cache
-			_attachOption = toLower (getText (configFile >> "CfgWeapons" >> _secondaryWeapon >> "dzn_MGTripodInfo" >> "item"));
+			_attachOption = toLower (getText (configFile >> "CfgWeapons" >> _secondaryWeapon >> "dzn_MG_Tripod_AttachItem"));
 			_hasAttachOption = _attachOption != "";
 
 			GVAR(Cache) setVariable [_secondaryWeapon, [_hasAttachOption, _attachOption]];
@@ -100,7 +100,7 @@ switch (toUpper _mode) do {
 
 		private _carryItemInfo = GVAR(Cache) getVariable _attach;
 		if (isNil "_carryItemInfo") then {
-			_carryItem = getText (configFile >> "CfgWeapons" >> _attach >> "dzn_MGTripodInfo" >> "carry");
+			_carryItem = getText (configFile >> "CfgWeapons" >> _attach >> "dzn_MG_Tripod_CarryItem");
 			_hasCarryOption = _carryItem != "";
 
 			GVAR(Cache) setVariable [_attach, [_hasCarryOption, _carryItem]];

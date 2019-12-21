@@ -1,11 +1,3 @@
-/*
-	TODO:
-		- Play animation on Mounting / Dismounting
-		- Handle removing attach from weapon and convert to launcher
-		
-		- Remove Logging
-		
-*/
 
 /*
 	Assumptions:
@@ -40,6 +32,7 @@ COMPILE_FUNCTION(fnc_getWeaponDeployGestures);
 COMPILE_FUNCTION(fnc_checkWeaponHasDeployGestures);
 COMPILE_FUNCTION(fnc_selectGesture);
 
+/*
 GVAR(fnc_addEHs) = {
 	private _ehId = player getVariable [SVAR(LoadoutEH), -1];
 	if (_ehId >= 0) then {
@@ -49,7 +42,9 @@ GVAR(fnc_addEHs) = {
 	_ehId = ["loadout", GVAR(fnc_handleLoadoutEH), true] call CBA_fnc_addPlayerEventHandler;
 	player setVariable [SVAR(LoadoutEH), _ehId];
 };
+*/
 
 // Init
-[] call GVAR(fnc_addEHs);
+private _ehId = ["loadout", GVAR(fnc_handleLoadoutEH), true] call CBA_fnc_addPlayerEventHandler;
+player setVariable [SVAR(LoadoutEH), _ehId];
 
