@@ -8,7 +8,6 @@ class CfgPatches
 		requiredAddons[] = {
 			"CBA_MAIN"
 			,"CBA_jr"
-			,"Weapons_f"
 			,"dzn_MG_Tripod"
 		};
 		author = "10Dozen";
@@ -59,7 +58,7 @@ class CfgWeapons
 	class arifle_MX_Base_F;
 	class arifle_MX_SW_F: arifle_MX_Base_F
 	{
-		dzn_MG_Tripod_deployedGesture[] = {"","","dzn_MG_Tripod_GestureHoldProneType2"}
+		dzn_MG_Tripod_deployedGesture[] = {"","","dzn_MG_Tripod_GestureHoldProneType2"};
 	};
 	class arifle_MXM_F: arifle_MX_Base_F {
 		DEPLOYED_GESTURE_IAR;
