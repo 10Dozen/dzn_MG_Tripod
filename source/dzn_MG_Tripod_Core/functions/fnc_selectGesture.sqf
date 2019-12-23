@@ -4,8 +4,10 @@
 Function: dzn_MG_Tripod_fnc_selectGesture
 
 Description:
-	Returns hold gesture for given weapon and player stance.
-	If no gestures available: returns ""
+	Returns hold gesture for given weapon and player stance or "" if not available.
+	Conditions are:
+	- There deploy gestures defined in weapon config
+	- Weapon has hasBipod=1 defined in weapon config OR weapon has attached bipod item
 
 Parameters:
 	_unit -- unit (player) <OBJECT>
@@ -25,9 +27,16 @@ Author:
 
 params ["_unit", "_weapon"];
 
-private _gestures = [_weapon] call GVAR(fnc_getWeaponDeployGestures);
+([_weapon] call GVAR(fnc_getWeaponDeployGestures)) params ["_gestures", "_hasBipod"];
+
+// --- Exit if no gestures defined at all
 if (_gestures isEqualTo []) exitWith { "" };
 
+// --- Exit if weapon does not carry nor in-built, nor attached bipod
+private _hasAttachedBipod = ((primaryWeaponItems _unit) # 3) != "";
+if !(_hasBipod || _hasAttachedBipod) exitWith { "" };
+
+// --- Select gesture by unit's stance
 private _stance = toUpper(stance _unit);
 private _stancesToCheck = [
 	if (GVAR(Enabled_StandGesture)) then { "STAND" } else { "" }

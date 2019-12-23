@@ -6,7 +6,7 @@ Function: dzn_MG_Tripod_fnc_handleLoadoutEH
 Description:
 	Handles Loadout event: 
 		- Verifies that player has primary weapon is compatible with tripods and has gesture anim
-		- Adds or removes Deployed & Reloaded EHs if needed
+		- Adds or removes Deployed EH if needed
 		- Adds or removes tripod carry-to-attach actions and Inventory EH
 	
 	Assumptions:
@@ -40,7 +40,7 @@ private _w = _newLoadout # 0 # 0;
 private _sw = if (_newLoadout # 1 isEqualTo []) then { "" } else { _newLoadout # 1 # 0 };
 
 private _hasGesture 		= [_w] call GVAR(fnc_checkWeaponHasDeployGestures);
-private _hasEHs 			= (_unit getVariable [SVAR(DeployedEH), -1] >= 0 && _unit getVariable [SVAR(ReloadedEH), -1] >= 0);
+private _hasEHs 			= (_unit getVariable [SVAR(DeployedEH), -1] >= 0);
 private _hasActionC2A 		= _unit getVariable [SVAR(ActionC2A), -1] >= 0;
 private _hasActionA2C 		= _unit getVariable [SVAR(ActionA2C), -1] >= 0;
 
@@ -55,11 +55,6 @@ if (_hasGesture) then {
 		_unit setVariable [
 			SVAR(DeployedEH)
 			, _unit addEventHandler ["WeaponDeployed", { _this call GVAR(fnc_handleDeployedEH) }]
-		];
-		
-		_unit setVariable [
-			SVAR(ReloadedEH)
-			, _unit addEventHandler ["Reloaded", { _this call GVAR(fnc_handleReloadedEH) }]
 		];
 	};
 
@@ -120,11 +115,8 @@ if (_hasGesture) then {
 
 	// --- Remove Deployed & Reloaded EHs
 	if (_hasEHs) then {
-		_unit removeEventHandler ["WeaponDeployed", _unit getVariable SVAR(DeployedEH)];
-		_unit removeEventHandler ["Reloaded", _unit getVariable SVAR(ReloadedEH)];
-		
+		_unit removeEventHandler ["WeaponDeployed", _unit getVariable SVAR(DeployedEH)];		
 		_unit setVariable [SVAR(DeployedEH), -1];
-		_unit setVariable [SVAR(ReloadedEH), -1];
 	};
 	
 	// --- Remove L2A / A2L Conversion actions
@@ -134,25 +126,3 @@ if (_hasGesture) then {
 	// --- Remove inventory EHs
 	["CLEAR"] call GVAR(fnc_uiHandleInventory);
 };
-
-
-/*
-	// --- Launcher-to-Attach (L2A) & Attach-to-Launcher (A2L) Conversion
-	// [_w, "bipod"] call CBA_fnc_compatibleItems;
-	// --- L2A
-	// if has launcher-carry item
-	//	if launcher-carry item conversion is comaptible to weapon
-	//		if no actions : add actions
-	//		if actions exists : do nothing
-	//	if launcher-carry item conversion is NOT comaptible to weapon: remove actions
-	// if has no launcher-carry && actions exists: remove actions
-	
-	// --- A2L
-	// if has attach item conversion
-	//	if NO backpack
-	//		if action exists: do nothing
-	//		if NO action: add A2L action
-	//	if HAS backpack:
-	//		if action exists: remove A2L action
-	//		if NO action: do nothing
-*/

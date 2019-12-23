@@ -28,20 +28,30 @@ Author:
 
 params ["_unit", "_isDeployed"];
 
+// --- Skip anim changes if player is in reload sequence
+if (_unit getVariable [SVAR(ReloadInProgress), false]) exitWith {};
+
 private _weapon = primaryWeapon _unit;
 if (_weapon != currentWeapon _unit) exitWith {};
 
-private _isGestureEnabled = GVAR(Enabled_StandGesture) || GVAR(Enabled_CrouchGesture) || GVAR(Enabled_ProneGesture);
+private _isGesturesEnabled = GVAR(Enabled_ProneGesture) || { GVAR(Enabled_CrouchGesture) || GVAR(Enabled_StandGesture) };
+
 if (
-	_isGestureEnabled
+	_isGesturesEnabled
 	&& { [_weapon] call GVAR(fnc_checkWeaponHasDeployGestures) }
 ) then {
-
 	if (_isDeployed) then {
-		private _guesture = [_unit, _weapon] call GVAR(fnc_selectGesture);
-		_unit playAction _guesture;
+		private _gesture = [_unit, _weapon] call GVAR(fnc_selectGesture);
+		if (_gesture != "") then {
+			_unit playAction _gesture;
+			_unit setVariable [SVAR(HoldGestureApplied), true];
+		};
 	} else {
-		_unit playAction "gestureNod";
+		// --- Play reverting action only if hold gesture were applied
+		if (_unit getVariable [SVAR(HoldGestureApplied), false]) then {
+			_unit playAction "gestureNod";
+			_unit setVariable [SVAR(HoldGestureApplied), false];
+		};
 	};
 };
 

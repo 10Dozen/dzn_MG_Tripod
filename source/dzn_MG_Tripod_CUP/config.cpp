@@ -37,8 +37,13 @@ class CUP_PicatinnySideMount;
 
 #define DEPLOYED_GESTURE_IAR \
 	dzn_MG_Tripod_deployedGesture[] = {"","","dzn_MG_Tripod_GestureHoldProneType1"}
-// dzn_MG_Tripod_deployedGesture[] = {"dzn_MG_Tripod_GestureHoldType4","dzn_MG_Tripod_GestureHoldCrouchType1","dzn_MG_Tripod_GestureHoldProneType1"}
 
+#define RELOAD_EH \
+	class EventHandlers: EventHandlers \
+	{ \
+		reload = "systemChat ('Reload Start: ' + str _this); _this call dzn_MG_Tripod_fnc_handleReloadEH"; \
+		reloaded = "systemChat ('Reload End: ' + str _this); _this call dzn_MG_Tripod_fnc_handleReloadedEH"; \
+	}
 
 
 class CfgWeapons
@@ -47,6 +52,7 @@ class CfgWeapons
 	class Rifle_Base_F: Rifle 
 	{
 		class WeaponSlotsInfo;
+		class EventHandlers;
 	};
 	class Rifle_Long_Base_F: Rifle_Base_F
 	{
@@ -62,6 +68,7 @@ class CfgWeapons
 	class CUP_lmg_M240: Rifle_Long_Base_F
 	{
 		DEPLOYED_GESTURE_GPMG;
+		RELOAD_EH;
 		
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
@@ -83,6 +90,8 @@ class CfgWeapons
 	class CUP_saw_base: Rifle_Long_Base_F
 	{
 		DEPLOYED_GESTURE_M249;
+		RELOAD_EH;
+		
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot: UnderBarrelSlot
@@ -102,16 +111,19 @@ class CfgWeapons
 	class CUP_lmg_minimipara: CUP_saw_base
 	{
 		DEPLOYED_GESTURE_M249PARA;
+		RELOAD_EH;
 		class WeaponSlotsInfo;
 	};
 	class CUP_lmg_minimi_railed: CUP_lmg_minimipara 
 	{
 		DEPLOYED_GESTURE_M249;
+		RELOAD_EH;
 		class WeaponSlotsInfo;
 	};
 	class CUP_lmg_m249_pip4: CUP_lmg_minimi_railed
 	{
 		DEPLOYED_GESTURE_M249;
+		RELOAD_EH;
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot {};
@@ -119,7 +131,13 @@ class CfgWeapons
 	};
 	class CUP_lmg_m249_para_gl :CUP_lmg_minimipara
 	{
-		dzn_MG_Tripod_deployedGesture[] = {};		
+		dzn_MG_Tripod_deployedGesture[] = {};
+		class EventHandlers: EventHandlers 
+		{
+			reload = "";
+			reloaded = "";
+		};
+		
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot {};
@@ -128,6 +146,7 @@ class CfgWeapons
 	class CUP_lmg_L110A1 :CUP_lmg_m249_pip4
 	{
 		DEPLOYED_GESTURE_M249PARA;
+		RELOAD_EH;
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot: UnderBarrelSlot
@@ -148,6 +167,7 @@ class CfgWeapons
 	class CUP_M60E4_base: Rifle_Long_Base_F
 	{
 		DEPLOYED_GESTURE_GPMG;
+		RELOAD_EH;
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot: UnderBarrelSlot
@@ -167,6 +187,7 @@ class CfgWeapons
 	class CUP_lmg_M60: CUP_M60E4_base
 	{
 		DEPLOYED_GESTURE_GPMG;
+		RELOAD_EH;
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot: UnderBarrelSlot
@@ -182,6 +203,7 @@ class CfgWeapons
 	class CUP_lmg_Mk48_Base: Rifle_Long_Base_F
 	{
 		DEPLOYED_GESTURE_M249;
+		RELOAD_EH;
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class UnderBarrelSlot: UnderBarrelSlot
@@ -203,6 +225,7 @@ class CfgWeapons
 	class CUP_lmg_MG3: Rifle_Long_Base_F
 	{
 		DEPLOYED_GESTURE_GPMG;
+		RELOAD_EH;
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class CowsSlot;
@@ -222,6 +245,7 @@ class CfgWeapons
 	class CUP_lmg_MG3_rail: CUP_lmg_MG3 
 	{
 		DEPLOYED_GESTURE_GPMG;
+		RELOAD_EH;
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
 			class CowsSlot: CUP_PicatinnyTopMount {};
@@ -244,6 +268,7 @@ class CfgWeapons
 	class CUP_lmg_PKM: Rifle_Long_Base_F
 	{
 		dzn_MG_Tripod_deployedGesture[] = {"dzn_MG_Tripod_GestureHoldType3","dzn_MG_Tripod_GestureHoldCrouchType2","dzn_MG_Tripod_GestureHoldProneType1"};
+		RELOAD_EH;
 		
 		class WeaponSlotsInfo: WeaponSlotsInfo
 		{
@@ -262,10 +287,14 @@ class CfgWeapons
 	// class CUP_lmg_Pecheneg: CUP_lmg_PKM {};
 	
 	// --- CUP RPK
-	class CUP_arifle_AK_Base;
+	class CUP_arifle_AK_Base: Rifle_Base_F
+	{
+		class EventHandlers;
+	};
 	class CUP_arifle_RPK74: CUP_arifle_AK_Base
 	{
 		DEPLOYED_GESTURE_IAR;
+		RELOAD_EH;
 	};
 	/*
 	class CUP_arifle_RPK74_top_rail: CUP_arifle_RPK74
@@ -293,4 +322,27 @@ class CfgWeapons
 		DEPLOYED_GESTURE_IAR;
 	};
 	*/
+	
+	/*	TODO
+		Class						Gesture				
+		"CUP_lmg_UK59"				Type1				
+									CrouchType1
+									HoldProneType1
+		
+		"CUP_srifle_VSSVintorez"	HoldProneType1
+		"CUP_srifle_AS50"			HoldProneType1		
+		"CUP_arifle_MG36"			HoldProneType1
+		"CUP_srifle_M14_DMR"		HoldProneType1
+		"CUP_srifle_M14"			HoldProneType1
+		"CUP_srifle_m110_kac"		HoldCrouchType2
+									HoldProneType2
+		"CUP_srifle_M110"			HoldCrouchType2
+									HoldProneType1
+		"CUP_srifle_M107_Base"		HoldCrouchType2
+									HoldProneType2
+		"CUP_srifle_L129A1_HG"		HoldCrouchType1
+									HoldProneType1
+		"CUP_arifle_AS_VAL"			HoldProneType1
+		
+		
 };
