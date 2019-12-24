@@ -153,16 +153,16 @@ switch (toUpper _mode) do {
 				(GVAR(Cache) getVariable _sw) params ["_hasAttach","_attachItem"];
 				_unit removeWeapon _sw;
 				_unit addPrimaryWeaponItem _attachItem;
-				_unit setAnimSpeedCoef 1;ce;
+				_unit setAnimSpeedCoef 1;
 
-				hint "Done";
+				hint LOCALIZE_FORMAT_STR("Hint_Mounted");
 			}
 			, {
 				(_this # 0) params ["_unit","_actionId","_preAnimStance"];
 
 				_unit setAnimSpeedCoef 1;
 				_unit switchMove _preAnimStance;
-				hint "Aborted";
+				hint LOCALIZE_FORMAT_STR("Hint_Aborted");
 			}
 			, [_unit, _actionId, _preAnimStance]
 		] call CBA_fnc_progressBar;
@@ -190,14 +190,14 @@ switch (toUpper _mode) do {
 				_unit addWeapon _carryItem;
 				_unit setAnimSpeedCoef 1;
 
-				hint "Done";
+				hint LOCALIZE_FORMAT_STR("Hint_Dimounted");
 			}
 			, {
 				(_this # 0) params ["_unit","_actionId","_preAnimStance"];
 
 				_unit setAnimSpeedCoef 1;
 				_unit switchMove _preAnimStance;
-				hint "Aborted";
+				hint LOCALIZE_FORMAT_STR("Hint_Aborted");
 			}
 			, [_unit, _actionId, _preAnimStance]
 		] call CBA_fnc_progressBar;

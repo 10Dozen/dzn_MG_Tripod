@@ -8,7 +8,7 @@ class CfgPatches
 		requiredAddons[] = {
 			"CBA_MAIN"
 			,"CBA_jr"
-			,"dzn_MG_Tripod"
+			,"dzn_MG_Tripod_Core"
 		};
 		author = "10Dozen";
 		version = "1.2";
@@ -40,8 +40,11 @@ class dzn_MG_Tripod_Underslot: asdg_UnderSlot
 #define RELOAD_EH \
 	class EventHandlers: EventHandlers \
 	{ \
-		reload = "systemChat ('Reload Start: ' + str _this); _this call dzn_MG_Tripod_fnc_handleReloadEH"; \
-		reloaded = "systemChat ('Reload End: ' + str _this); _this call dzn_MG_Tripod_fnc_handleReloadedEH"; \
+		class dzn_MG_Tripod \
+		{ \
+			reload = "_this call dzn_MG_Tripod_fnc_handleReloadEH"; \
+			reloaded = "_this call dzn_MG_Tripod_fnc_handleReloadedEH"; \
+		}; \
 	}
 
 class CfgWeapons
@@ -63,17 +66,6 @@ class CfgWeapons
 	
 	// --- Vanilla MGs
 	// --- ------------------------------
-	class arifle_MX_Base_F: Rifle_Base_F {};
-	class arifle_MX_SW_F: arifle_MX_Base_F
-	{
-		dzn_MG_Tripod_deployedGesture[] = {"","","dzn_MG_Tripod_GestureHoldProneType2"};
-		RELOAD_EH;
-	};
-	class arifle_MXM_F: arifle_MX_Base_F {
-		DEPLOYED_GESTURE_IAR;
-		RELOAD_EH;
-	};
-	
 	class LMG_Mk200_F: Rifle_Long_Base_F
 	{
 		DEPLOYED_GESTURE_GPMG;
@@ -123,26 +115,4 @@ class CfgWeapons
 		DEPLOYED_GESTURE_M249PARA;
 		RELOAD_EH;
 	};
-	
-	class arifle_AK12_base_F: Rifle_Base_F {};
-	class arifle_RPK12_base_F: arifle_AK12_base_F
-	{
-		DEPLOYED_GESTURE_IAR;
-		RELOAD_EH;
-	};
-	
-	/* --- TODO:
-		"srifle_EBR_F"			HoldProneType1				no bipods =(
-		"srifle_GM6_F"			HoldProneType1
-		"srifle_LRR_F"			HoldProneType1
-		"srifle_DMR_04_Tan_F"	HoldProneType1				no bipods =(
-		"srifle_DMR_05_blk_F"	HoldProneType1				no bipods =(
-		"srifle_DMR_02_F"									no bipods =(
-		"srifle_DMR_03_F"									no bipods =(
-		"srifle_DMR_06_camo_F"								no bipods =(
-		"srifle_DMR_07_blk_F"
-		"srifle_DMR_06_hunter_F"
-		
-		"arifle_MSBS65_Mark_sand_F"	HoldProneType1
-	*/
 };

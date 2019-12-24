@@ -13,8 +13,8 @@ class CfgPatches
 			,"CUP_Weapons_M60E4"
 			,"CUP_Weapons_MG3"
 			,"CUP_Weapons_PK"
-			,"CUP_Weapons_AK"
-			,"dzn_MG_Tripod"
+			,"CUP_Weapons_UK59"
+			,"dzn_MG_Tripod_Core"
 		};
 		author = "10Dozen";
 		version = "1.2";
@@ -41,13 +41,39 @@ class CUP_PicatinnySideMount;
 #define RELOAD_EH \
 	class EventHandlers: EventHandlers \
 	{ \
-		reload = "systemChat ('Reload Start: ' + str _this); _this call dzn_MG_Tripod_fnc_handleReloadEH"; \
-		reloaded = "systemChat ('Reload End: ' + str _this); _this call dzn_MG_Tripod_fnc_handleReloadedEH"; \
+		class dzn_MG_Tripod \
+		{ \
+			reload = "_this call dzn_MG_Tripod_fnc_handleReloadEH"; \
+			reloaded = "_this call dzn_MG_Tripod_fnc_handleReloadedEH"; \
+		}; \
 	}
 
 
 class CfgWeapons
 {
+	// --- Tripod Attach
+	class dzn_MG_Tripod_Universal;
+	class dzn_MG_Tripod_M122A1_M240Mount: dzn_MG_Tripod_Universal
+	{
+		scope=2;
+	};
+	class dzn_MG_Tripod_M122A1_M60Mount: dzn_MG_Tripod_Universal
+	{
+		scope=2;
+	};
+	
+	// --- Tripod Carry Item
+	class dzn_MG_Tripod_Universal_Carry;
+	class dzn_MG_Tripod_M122A1_M240Mount_Carry: dzn_MG_Tripod_Universal_Carry
+	{
+		scope=2;
+	};
+	class dzn_MG_Tripod_M122A1_M60Mount_Carry: dzn_MG_Tripod_Universal_Carry
+	{
+		scope=2;
+	};
+	
+	// --- Weapon compatibility	
 	class Rifle;
 	class Rifle_Base_F: Rifle 
 	{
@@ -221,7 +247,6 @@ class CfgWeapons
 
 	// --- CUP MG3
 	// --- ------------------------------
-	
 	class CUP_lmg_MG3: Rifle_Long_Base_F
 	{
 		DEPLOYED_GESTURE_GPMG;
@@ -286,63 +311,16 @@ class CfgWeapons
 	};
 	// class CUP_lmg_Pecheneg: CUP_lmg_PKM {};
 	
-	// --- CUP RPK
-	class CUP_arifle_AK_Base: Rifle_Base_F
+	// --- CUP UK59
+	// --- ------------------------------	
+	class CUP_lmg_UK59: Rifle_Long_Base_F
 	{
-		class EventHandlers;
-	};
-	class CUP_arifle_RPK74: CUP_arifle_AK_Base
-	{
-		DEPLOYED_GESTURE_IAR;
+		dzn_MG_Tripod_deployedGesture[] = 
+		{
+			"dzn_MG_Tripod_GestureHoldType1"
+			,"dzn_MG_Tripod_GestureHoldCrouchType2"
+			,"dzn_MG_Tripod_GestureHoldProneType2"
+		};
 		RELOAD_EH;
 	};
-	/*
-	class CUP_arifle_RPK74_top_rail: CUP_arifle_RPK74
-	{
-		DEPLOYED_GESTURE_IAR;
-	};
-	class CUP_arifle_RPK74_45: CUP_arifle_RPK74
-	{
-		DEPLOYED_GESTURE_IAR;
-	};
-	class CUP_arifle_RPK74_45_top_rail: CUP_arifle_RPK74
-	{
-		DEPLOYED_GESTURE_IAR;
-	};
-	class CUP_arifle_RPK74M: CUP_arifle_RPK74
-	{
-		DEPLOYED_GESTURE_IAR;
-	};
-	class CUP_arifle_RPK74M_top_rail: CUP_arifle_RPK74M
-	{
-		DEPLOYED_GESTURE_IAR;
-	};
-	class CUP_arifle_RPK74M_railed: CUP_arifle_RPK74M_top_rail
-	{
-		DEPLOYED_GESTURE_IAR;
-	};
-	*/
-	
-	/*	TODO
-		Class						Gesture				
-		"CUP_lmg_UK59"				Type1				
-									CrouchType1
-									HoldProneType1
-		
-		"CUP_srifle_VSSVintorez"	HoldProneType1
-		"CUP_srifle_AS50"			HoldProneType1		
-		"CUP_arifle_MG36"			HoldProneType1
-		"CUP_srifle_M14_DMR"		HoldProneType1
-		"CUP_srifle_M14"			HoldProneType1
-		"CUP_srifle_m110_kac"		HoldCrouchType2
-									HoldProneType2
-		"CUP_srifle_M110"			HoldCrouchType2
-									HoldProneType1
-		"CUP_srifle_M107_Base"		HoldCrouchType2
-									HoldProneType2
-		"CUP_srifle_L129A1_HG"		HoldCrouchType1
-									HoldProneType1
-		"CUP_arifle_AS_VAL"			HoldProneType1
-		
-		
 };

@@ -59,6 +59,12 @@
 			<Key ID="STR_MG_Tripod_M122Tripod_M60">
 				<Original>M122 MG Tripod (M60 mount)</Original>
 			</Key>
+			<Key ID="STR_MG_Tripod_M122Tripod_M240_RHS">
+				<Original>M122 MG Tripod (M240/RHS)</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_M122Tripod_M249_RHS">
+				<Original>M122 MG Tripod (M249/RHS)</Original>
+			</Key>
 			
 			<Key ID="STR_MG_Tripod_MGUniversalTripod_Carry">
 				<Original>MG Tripod (Packed/Universal)</Original>
@@ -68,6 +74,12 @@
 			</Key>
 			<Key ID="STR_MG_Tripod_M122Tripod_M60_Carry">
 				<Original>M122 MG Tripod (Packed/M60 mount)</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_M122Tripod_M240_RHS_Carry">
+				<Original>M122 MG Tripod (Packed/M240/RHS)</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_M122Tripod_M249_RHS_Carry">
+				<Original>M122 MG Tripod (Packed/M249/RHS)</Original>
 			</Key>
 		</Container>
 
@@ -84,6 +96,16 @@
 			</Key>
 			<Key ID="STR_MG_Tripod_ProgressBar_Dismount">
 				<Original>Dismounting tripod</Original>
+			</Key>
+			
+			<Key ID="STR_MG_Tripod_Hint_Mounted">
+				<Original>Tripod has been mounted</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_Hint_Dimounted">
+				<Original>Tripod has been dismounted</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_Hint_Aborted">
+				<Original>Tripod action aborted</Original>
 			</Key>
 		</Container>
 	</Package>

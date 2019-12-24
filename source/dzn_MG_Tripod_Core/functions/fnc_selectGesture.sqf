@@ -32,9 +32,17 @@ params ["_unit", "_weapon"];
 // --- Exit if no gestures defined at all
 if (_gestures isEqualTo []) exitWith { "" };
 
-// --- Exit if weapon does not carry nor in-built, nor attached bipod
-private _hasAttachedBipod = ((primaryWeaponItems _unit) # 3) != "";
-if !(_hasBipod || _hasAttachedBipod) exitWith { "" };
+if (!_hasBipod) then {
+	// --- Check for attached bipod
+	private _attachedBipodItem = ((primaryWeaponItems _unit) # 3);
+
+	if (_attachedBipodItem != "") then {	
+		// --- Check that item in bipod slot is actual bipod (e.g. RHS grips)
+		_hasBipod = (getNumber (configFile >> "CfgWeapons" >> ((primaryWeaponItems _unit) # 3) >> "ItemInfo" >> "hasBipod")) == 1;
+	};
+};
+
+if !(_hasBipod) exitWith { "" };
 
 // --- Select gesture by unit's stance
 private _stance = toUpper(stance _unit);

@@ -7,10 +7,14 @@ class CfgPatches
 			"dzn_MG_Tripod_Universal"
 			,"dzn_MG_Tripod_M122A1_M240mount"
 			,"dzn_MG_Tripod_M122A1_M60mount"
+			,"dzn_MG_Tripod_M122A1_M240Mount_RHS"
+			,"dzn_MG_Tripod_M122A1_M249Mount_RHS"
 			
 			,"dzn_MG_Tripod_Universal_Carry"
 			,"dzn_MG_Tripod_M122A1_M240mount_Carry"
 			,"dzn_MG_Tripod_M122A1_M60mount_Carry"
+			,"dzn_MG_Tripod_M122A1_M240Mount_RHS_Carry"
+			,"dzn_MG_Tripod_M122A1_M249Mount_RHS_Carry"
 		};
 		requiredVersion = 0.1;
 		requiredAddons[] = {
@@ -20,8 +24,6 @@ class CfgPatches
 			,"CBA_MAIN"
 			,"CBA_jr"
 			,"dzn_MG_Tripod"
-			,"dzn_MG_Tripod_A3"
-			,"dzn_MG_Tripod_CUP"
 		};
 		author = "10Dozen";
 		version = "1.2";
@@ -83,7 +85,7 @@ class CfgWeapons
 	};
 	class dzn_MG_Tripod_M122A1_M240Mount: dzn_MG_Tripod_Universal
 	{
-		scope=2;
+		scope=1;
 		author="10Dozen";
 		displayName="$STR_MG_Tripod_M122Tripod_M240";
 		model="\dzn_MG_Tripod\nato_tripod_m122_m240.p3d";
@@ -92,13 +94,32 @@ class CfgWeapons
 	};
 	class dzn_MG_Tripod_M122A1_M60Mount: dzn_MG_Tripod_Universal
 	{
-		scope=2;
+		scope=1;
 		author="10Dozen";
 		displayName="$STR_MG_Tripod_M122Tripod_M60";
 		model="\dzn_MG_Tripod\nato_tripod_m122_m60.p3d";
 		picture = "\dzn_MG_Tripod\data\ui\tripod_m122_m60_icon_ca.paa";
 		dzn_MG_Tripod_CarryItem = "dzn_MG_Tripod_M122A1_M60Mount_Carry";
 	};
+	class dzn_MG_Tripod_M122A1_M240Mount_RHS: dzn_MG_Tripod_Universal
+	{
+		scope=1;
+		author="10Dozen";
+		displayName="$STR_MG_Tripod_M122Tripod_M240_RHS";
+		model="\dzn_MG_Tripod\nato_tripod_m122_m240_rhs.p3d";
+		picture = "\dzn_MG_Tripod\data\ui\tripod_m122_icon_ca.paa";
+		dzn_MG_Tripod_CarryItem = "dzn_MG_Tripod_M122A1_M240Mount_RHS_Carry";
+	};
+	class dzn_MG_Tripod_M122A1_M249Mount_RHS: dzn_MG_Tripod_Universal
+	{
+		scope=1;
+		author="10Dozen";
+		displayName="$STR_MG_Tripod_M122Tripod_M249_RHS";
+		model="\dzn_MG_Tripod\nato_tripod_m122_m249_rhs.p3d";
+		picture = "\dzn_MG_Tripod\data\ui\tripod_m122_icon_ca.paa";
+		dzn_MG_Tripod_CarryItem = "dzn_MG_Tripod_M122A1_M249Mount_RHS_Carry";
+	};
+	
 	
 	// --- Carry item (Launcher slot)
 	class dzn_MG_Tripod_Universal_Carry: Launcher_Base_F
@@ -119,17 +140,32 @@ class CfgWeapons
 	};
 	class dzn_MG_Tripod_M122A1_M240Mount_Carry: dzn_MG_Tripod_Universal_Carry
 	{
-		scope=2;
+		scope=1;
 		author="10Dozen";
 		displayName="$STR_MG_Tripod_M122Tripod_M240_Carry";
 		dzn_MG_Tripod_AttachItem = "dzn_MG_Tripod_M122A1_M240Mount";
 	};
 	class dzn_MG_Tripod_M122A1_M60Mount_Carry: dzn_MG_Tripod_Universal_Carry
 	{
-		scope=2;
+		scope=1;
 		author="10Dozen";
 		displayName="$STR_MG_Tripod_M122Tripod_M60_Carry";
 		dzn_MG_Tripod_AttachItem = "dzn_MG_Tripod_M122A1_M60Mount";
+	};
+	
+	class dzn_MG_Tripod_M122A1_M240Mount_RHS_Carry: dzn_MG_Tripod_Universal_Carry
+	{
+		scope=1;
+		author="10Dozen";
+		displayName="$STR_MG_Tripod_M122Tripod_M240_RHS_Carry";
+		dzn_MG_Tripod_AttachItem = "dzn_MG_Tripod_M122A1_M240Mount_RHS";
+	};
+	class dzn_MG_Tripod_M122A1_M249Mount_RHS_Carry: dzn_MG_Tripod_Universal_Carry
+	{
+		scope=1;
+		author="10Dozen";
+		displayName="$STR_MG_Tripod_M122Tripod_M249_RHS_Carry";
+		dzn_MG_Tripod_AttachItem = "dzn_MG_Tripod_M122A1_M249Mount_RHS";
 	};
 };
 
