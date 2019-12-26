@@ -130,7 +130,6 @@ class CfgWeapons
 	};
 	
 	// --- XM8 SAW
-//	class CUP_arifle_XM8_Base: Rifle_Base_F
 	class CUP_arifle_XM8_Base;
 	class CUP_arifle_xm8_sharpshooter: CUP_arifle_XM8_Base
 	{
@@ -141,29 +140,4 @@ class CfgWeapons
 		DEPLOYED_GESTURE_PRONE_TYPE1;
 		RELOAD_EH;
 	};
-	
-	/*	TODO
-		Class						Gesture				
-		"CUP_lmg_UK59"				Type1				
-									CrouchType1
-									HoldProneType1
-		
-		"CUP_srifle_AS50"			HoldProneType1		
-		"CUP_arifle_MG36"			HoldProneType1
-		"CUP_srifle_M14_DMR"		HoldProneType1
-		"CUP_srifle_M14"			HoldProneType1
-		"CUP_srifle_m110_kac"		HoldCrouchType2
-									HoldProneType2
-		"CUP_srifle_M110"			HoldCrouchType2
-									HoldProneType1
-		"CUP_srifle_M107_Base"		HoldCrouchType2
-									HoldProneType2
-		"CUP_srifle_L129A1_HG"		HoldCrouchType1
-									HoldProneType1
-		"CUP_srifle_VSSVintorez"	HoldProneType1
-		"CUP_arifle_AS_VAL"			HoldProneType1
-		
-		"CUP_arifle_xm8_SAW"		HoldProneType1
-	*/
-		
 };

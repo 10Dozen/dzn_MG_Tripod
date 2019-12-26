@@ -135,18 +135,4 @@ class CfgWeapons
 		DEPLOYED_GESTURE_PRONE_TYPE1;
 		RELOAD_EH;
 	};
-	
-	/* --- TODO:
-		"srifle_EBR_F"			HoldProneType1				no bipods =(
-		"srifle_GM6_F"			HoldProneType1
-		"srifle_LRR_F"			HoldProneType1
-		"srifle_DMR_04_Tan_F"	HoldProneType1				no bipods =(
-		"srifle_DMR_05_blk_F"	HoldProneType1				no bipods =(
-		"srifle_DMR_02_F"									no bipods =(
-		"srifle_DMR_03_F"									no bipods =(
-		"srifle_DMR_06_camo_F"								no bipods =(
-		"srifle_DMR_07_blk_F"
-		"srifle_DMR_06_hunter_F"		
-		"arifle_MSBS65_Mark_sand_F"	HoldProneType1
-	*/
 };
