@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="dzn_MG_Tripod">
+	<Package name="dzn_MG_Tripod">
+		<Container name="Settings">
+			<!--
+			SETTINGS
+			-->
+			<Key ID="STR_MG_Tripod_Enabled">
+				<Original>Deployed effect enabled</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_Enabled_desc">
+				<Original>Enables custom aim/recoil coefficient when machine gun deployed using tripod</Original>
+			</Key>
+			
+			<Key ID="STR_MG_Tripod_DeployedAimCoef">
+				<Original>Deplyed Aim sway coefficient</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_DeployedAimCoef_desc">
+				<Original>Custom aim sway coefficient when machine gun deployed using tripod</Original>
+			</Key>
+			
+			<Key ID="STR_MG_Tripod_DeployedRecoilCoef">
+				<Original>Deplyed Recoil coefficient</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_DeployedRecoilCoef_desc">
+				<Original>Custom recoil coefficient when machine gun deployed using tripod</Original>
+			</Key>
+			
+			<Key ID="STR_MG_Tripod_Enabled_StandGesture">
+				<Original>Switch hand anim on deploy (Stand)</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_Enabled_StandGesture_desc">
+				<Original>Enables animation switch when weapon deployed (MGs) while standing</Original>
+			</Key>
+			
+			<Key ID="STR_MG_Tripod_Enabled_CrouchGesture">
+				<Original>Switch hand anim on deploy (Crouch)</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_Enabled_CrouchGesture_desc">
+				<Original>Enables animation switch when weapon deployed (MGs) while crouching</Original>
+			</Key>
+
+			<Key ID="STR_MG_Tripod_Enabled_ProneGesture">
+				<Original>Switch hand anim on deploy (Prone)</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_Enabled_ProneGesture_desc">
+				<Original>Enables animation switch when weapon deployed (MGs) while prone</Original>
+			</Key>
+			
+		</Container>
+		
+		<Container name="Items">
+			<Key ID="STR_MG_Tripod_MGUniversalTripod">
+				<Original>MG Tripod (Universal)</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_M122Tripod_M240">
+				<Original>M122 MG Tripod (M240/M249 mount)</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_M122Tripod_M60">
+				<Original>M122 MG Tripod (M60 mount)</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_M122Tripod_M240_RHS">
+				<Original>M122 MG Tripod (M240/RHS)</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_M122Tripod_M249_RHS">
+				<Original>M122 MG Tripod (M249/RHS)</Original>
+			</Key>
+			
+			<Key ID="STR_MG_Tripod_MGUniversalTripod_Carry">
+				<Original>MG Tripod (Packed/Universal)</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_M122Tripod_M240_Carry">
+				<Original>M122 MG Tripod (Packed/M240/M249 mount)</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_M122Tripod_M60_Carry">
+				<Original>M122 MG Tripod (Packed/M60 mount)</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_M122Tripod_M240_RHS_Carry">
+				<Original>M122 MG Tripod (Packed/M240/RHS)</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_M122Tripod_M249_RHS_Carry">
+				<Original>M122 MG Tripod (Packed/M249/RHS)</Original>
+			</Key>
+		</Container>
+
+		<Container name="InGame">
+			<Key ID="STR_MG_Tripod_Action_Mount">
+				<Original>Mount %1</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_Action_Dismount">
+				<Original>Dismount %1</Original>
+			</Key>
+
+			<Key ID="STR_MG_Tripod_ProgressBar_Mount">
+				<Original>Mounting tripod</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_ProgressBar_Dismount">
+				<Original>Dismounting tripod</Original>
+			</Key>
+			
+			<Key ID="STR_MG_Tripod_Hint_Mounted">
+				<Original>Tripod has been mounted</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_Hint_Dimounted">
+				<Original>Tripod has been dismounted</Original>
+			</Key>
+			<Key ID="STR_MG_Tripod_Hint_Aborted">
+				<Original>Tripod action aborted</Original>
+			</Key>
+		</Container>
+	</Package>
+</Project>

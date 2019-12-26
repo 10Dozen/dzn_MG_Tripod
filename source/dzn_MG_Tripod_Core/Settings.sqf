@@ -3,7 +3,7 @@
 // Addon Settings
 
 private _add = {
-	params ["_var","_type","_val",["_exp", "No Expression"],["_subcat", ""],["_needRestart", false]];	
+	params ["_var","_type","_val",["_exp", "No Expression"],["_subcat", ""],["_isGlobal",1],["_needRestart", false]];	
 	 
 	private _arr = [
 		format["dzn_%1_%2",ADDON,_var]
@@ -11,7 +11,7 @@ private _add = {
 		, [localize format["STR_%1_%2",ADDON,_var], localize format ["STR_%1_%2_desc",ADDON,_var]]
 		, if (_subcat == "") then { TITLE } else { [TITLE, _subcat] }
 		, _val
-		, true
+		, _isGlobal
 		, nil
 		, _needRestart
 	];
@@ -22,21 +22,55 @@ private _add = {
 
 
 // Settings 
+// --- Tripod
 [
 	"Enabled"
 	, "CHECKBOX"
 	, true
-	, true
+	, nil
+	, "Tripod"
 ] call _add;
 
 [
 	"DeployedAimCoef"
 	, "SLIDER"
 	, [0,1,0.1,2]
+	, nil
+	, "Tripod"
 ] call _add;
 
 [
 	"DeployedRecoilCoef"
 	, "SLIDER"
 	, [0,1,0.1,2]
+	, nil
+	, "Tripod"
+] call _add;
+
+// --- Gesture
+[
+	"Enabled_StandGesture"
+	, "CHECKBOX"
+	, true
+	, nil
+	, "Gesture"
+	, 0
+] call _add;
+
+[
+	"Enabled_CrouchGesture"
+	, "CHECKBOX"
+	, true
+	, nil
+	, "Gesture"
+	, 0
+] call _add;
+
+[
+	"Enabled_ProneGesture"
+	, "CHECKBOX"
+	, true
+	, nil
+	, "Gesture"
+	, 0
 ] call _add;
