@@ -16,6 +16,7 @@ class CfgPatches
 			,"CUP_Weapons_M110"
 			,"CUP_Weapons_M107"
 			,"CUP_Weapons_VSS"
+			,"CUP_arifle_L86A2"
 			,"dzn_MG_Tripod_Core"
 		};
 		author = "10Dozen";
@@ -79,6 +80,15 @@ class CfgWeapons
 	class CUP_arifle_G36_Base: Rifle_Base_f {};
 	class CUP_arifle_G36C: CUP_arifle_G36_Base {};
 	class CUP_arifle_MG36: CUP_arifle_G36C
+	{
+		DEPLOYED_GESTURE_PRONE_TYPE1;
+		RELOAD_EH;
+	};
+	
+	// --- L86
+	class CUP_l85a2_base: Rifle_Base_F {};
+	class CUP_l85a2: CUP_l85a2_base {};
+	class CUP_arifle_L86A2: CUP_l85a2
 	{
 		DEPLOYED_GESTURE_PRONE_TYPE1;
 		RELOAD_EH;

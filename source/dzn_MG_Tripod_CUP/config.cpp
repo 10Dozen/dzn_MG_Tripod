@@ -203,7 +203,7 @@ class CfgWeapons
 				
 				iconPinpoint="center";
 				iconPosition[] = {0.602,0.73};
-				iconScale  = 0.45;
+				iconScale  = 0.90;
 				iconPicture = "\dzn_MG_Tripod\data\ui\tripod_proxy_m122_m60_ca.paa";
 			};
 		};
@@ -219,7 +219,7 @@ class CfgWeapons
 			class UnderBarrelSlot: UnderBarrelSlot
 			{
 				iconPosition[] = {0.717,0.695};
-				iconScale  = 0.37;
+				iconScale  = 0.74;
 			};
 		};
 	};

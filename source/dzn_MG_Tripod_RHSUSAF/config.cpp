@@ -55,14 +55,25 @@ class CfgWeapons
 	};
 	// --- Tripod Carry Item
 	class dzn_MG_Tripod_Universal_Carry;
-	class dzn_MG_Tripod_M122A1_M240Mount_RHS_Carry: dzn_MG_Tripod_Universal_Carry
+	class dzn_MG_Tripod_M122A1_M240Mount_Carry: dzn_MG_Tripod_Universal_Carry
 	{
 		scope=2;
+	};
+	class dzn_MG_Tripod_M122A1_M60Mount_Carry: dzn_MG_Tripod_Universal_Carry
+	{
+		scope=2;
+	};
+	/*
+	// Deprecated
+	class dzn_MG_Tripod_M122A1_M240Mount_RHS_Carry: dzn_MG_Tripod_Universal_Carry
+	{
+		scope=1;
 	};
 	class dzn_MG_Tripod_M122A1_M249Mount_RHS_Carry: dzn_MG_Tripod_Universal_Carry
 	{
-		scope=2;
+		scope=1;
 	};
+	*/
 	
 	// --- Weapon compatibility
 	class Rifle;
