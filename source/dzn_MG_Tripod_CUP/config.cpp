@@ -17,7 +17,7 @@ class CfgPatches
 			,"dzn_MG_Tripod_Core"
 		};
 		author = "10Dozen";
-		version = "1.2";
+		version = "1.3";
 	};
 };
 
@@ -203,7 +203,7 @@ class CfgWeapons
 				
 				iconPinpoint="center";
 				iconPosition[] = {0.602,0.73};
-				iconScale  = 0.90;
+				iconScale  = 0.77;
 				iconPicture = "\dzn_MG_Tripod\data\ui\tripod_proxy_m122_m60_ca.paa";
 			};
 		};

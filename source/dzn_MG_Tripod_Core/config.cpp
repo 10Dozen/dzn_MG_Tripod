@@ -28,7 +28,7 @@ class CfgPatches
 			,"dzn_MG_Tripod"
 		};
 		author = "10Dozen";
-		version = "1.2";
+		version = "1.3";
 	};
 };
 
@@ -177,14 +177,12 @@ class CfgWeapons
 	class dzn_MG_Tripod_M122A1_M240Mount_RHS_Carry: dzn_MG_Tripod_Universal_Carry
 	{
 		scope=1;
-		displayName="[SCOPED OUT]"; // $STR_MG_Tripod_M122Tripod_M240_RHS_Carry";
-		// dzn_MG_Tripod_AttachItem = "dzn_MG_Tripod_M122A1_M240Mount_RHS";
+		displayName="[SCOPED OUT]";
 	};
 	class dzn_MG_Tripod_M122A1_M249Mount_RHS_Carry: dzn_MG_Tripod_Universal_Carry
 	{
 		scope=1;
-		displayName="[SCOPED OUT]"; // "$STR_MG_Tripod_M122Tripod_M249_RHS_Carry";
-		// dzn_MG_Tripod_AttachItem = "dzn_MG_Tripod_M122A1_M249Mount_RHS";
+		displayName="[SCOPED OUT]";
 	};
 };
 

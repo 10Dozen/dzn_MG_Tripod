@@ -16,11 +16,11 @@ class CfgPatches
 			,"CUP_Weapons_M110"
 			,"CUP_Weapons_M107"
 			,"CUP_Weapons_VSS"
-			,"CUP_arifle_L86A2"
+			,"CUP_Weapons_L85"
 			,"dzn_MG_Tripod_Core"
 		};
 		author = "10Dozen";
-		version = "1.2";
+		version = "1.3";
 	};
 };
 

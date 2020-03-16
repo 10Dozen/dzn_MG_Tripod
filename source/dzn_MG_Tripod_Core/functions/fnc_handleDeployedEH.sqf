@@ -13,7 +13,6 @@ Parameters:
 Returns:
 	nothing
 
-
 Examples:
     (begin example)
 		player addEventHandler [
@@ -25,7 +24,6 @@ Examples:
 Author:
 	10Dozen
 ---------------------------------------------------------------------------- */
-
 params ["_unit", "_isDeployed"];
 
 // --- Skip anim changes if player is in reload sequence
@@ -41,11 +39,11 @@ if (
 ) then {
 	private _guesture = [_unit, _weapon] call GVAR(fnc_selectGesture);
 	_unit playAction _guesture;
-	_unit setVariable [SVAR(GestureApplied),true];
+	_unit setVariable [SVAR(HoldGestureApplied),true];
 } else {
-	if (_unit getVariable [SVAR(GestureApplied),false]) then {
+	if (_unit getVariable [SVAR(HoldGestureApplied),false]) then {
 		_unit playAction "gestureNod";
-		_unit setVariable [SVAR(GestureApplied),false];
+		_unit setVariable [SVAR(HoldGestureApplied),false];
 	};
 };
 
