@@ -74,6 +74,7 @@ M107				No			Prone only
 M110				No			Crouch/Prone
 VSS Vintorez/AS Val	No			Prone only
 RPK/RPK-74/PKM-74M	No			Prone only
+L86A2               No          Prone only
 [/code]
 
 
@@ -87,7 +88,7 @@ Adds weapon specific tripods compatible to RHS machine guns.
 Weapon				Tripod		Gesture stance
 -----------------------------------------------
 M240B/G				Yes			No
-M249/Minimi			Yes			No
+M249/Minimi			Yes			Yes
 [/code]
 
 Changelog:
