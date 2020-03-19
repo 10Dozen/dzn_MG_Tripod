@@ -1,4 +1,4 @@
-# dzn_MG_Tripod (A3)
+﻿# dzn_MG_Tripod (A3)
 Tripod attachement for machine guns & gesture switch system.
 
 Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=1713801249
@@ -6,7 +6,7 @@ Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=1713801249
 Adds universal tripod attachement for machine guns (Mk200, Navid, SPMG).
 Adds gesture switch script for MGs and sniper rifles
 
-**Version:** 1.2
+**Version:** 1.3
 
 **Requirements:** CBA_A3
 
@@ -89,3 +89,20 @@ Weapon				Tripod		Gesture stance
 M240B/G				Yes			No
 M249/Minimi			Yes			No
 [/code]
+
+Changelog:
+v1.3
+- Reworked Carry item to Attach item conversion; now single tripod carry item may be compatible with vanilla, CUP and RHS (actual attach item selected dynamically)
+- Fixed binocular unavailability when used while gesture applied
+- Temporary fix for loadout EH
+
+v1.2
+- Added Gesture switch system
+- Added Tripod mount/dismount mechanics
+- Added tripod compatibility with A3 machine guns
+- Added tripod compatibility with RHS machine guns
+- Added gesture compatibility with A3 sniper rifles and IARs
+- Added gesture compatibility with CUP sniper rifles and IARs
+
+v1.1
+- First public release: tripod compatible with CUP machineguns

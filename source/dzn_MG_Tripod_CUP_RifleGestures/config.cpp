@@ -16,10 +16,11 @@ class CfgPatches
 			,"CUP_Weapons_M110"
 			,"CUP_Weapons_M107"
 			,"CUP_Weapons_VSS"
+			,"CUP_Weapons_L85"
 			,"dzn_MG_Tripod_Core"
 		};
 		author = "10Dozen";
-		version = "1.2";
+		version = "1.3";
 	};
 };
 
@@ -37,6 +38,9 @@ class CfgPatches
 	
 #define DEPLOYED_GESTURE_CROUCH_PRONE_TYPE21 \
 	dzn_MG_Tripod_deployedGesture[] = {"","dzn_MG_Tripod_GestureHoldCrouchType2","dzn_MG_Tripod_GestureHoldProneType1"}
+
+#define DEPLOYED_GESTURE_PRONE_TYPE3 \
+	dzn_MG_Tripod_deployedGesture[] = {"","","dzn_MG_Tripod_GestureHoldProneType3"}
 	
 #define RELOAD_EH \
 	class EventHandlers: EventHandlers \
@@ -81,6 +85,15 @@ class CfgWeapons
 	class CUP_arifle_MG36: CUP_arifle_G36C
 	{
 		DEPLOYED_GESTURE_PRONE_TYPE1;
+		RELOAD_EH;
+	};
+	
+	// --- L86
+	class CUP_l85a2_base: Rifle_Base_F {};
+	class CUP_l85a2: CUP_l85a2_base {};
+	class CUP_arifle_L86A2: CUP_l85a2
+	{
+		DEPLOYED_GESTURE_PRONE_TYPE3;
 		RELOAD_EH;
 	};
 	

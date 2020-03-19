@@ -7,6 +7,6 @@ class CfgPatches
 		requiredVersion = 0.1;
 		requiredAddons[] = {};
 		author = "10Dozen";
-		version = "1.2";
+		version = "1.3";
 	};
 };

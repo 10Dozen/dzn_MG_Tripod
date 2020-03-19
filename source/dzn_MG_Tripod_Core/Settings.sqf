@@ -47,6 +47,14 @@ private _add = {
 	, "Tripod"
 ] call _add;
 
+[
+	"FallbackToUniversal"
+	, "CHECKBOX"
+	, false
+	, nil
+	, "Tripod"
+] call _add;
+
 // --- Gesture
 [
 	"Enabled_StandGesture"

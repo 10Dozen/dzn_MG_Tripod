@@ -10,7 +10,7 @@ class CfgPatches
 			,"dzn_MG_Tripod_Core"
 		};
 		author = "10Dozen";
-		version = "1.2";
+		version = "1.3";
 	};
 };
 

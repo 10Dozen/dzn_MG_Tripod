@@ -10,6 +10,7 @@
 // Exit at dedicated or headless client
 if (!hasInterface) exitWith {};
 
+GVAR(CompatibleItemsCache) = call CBA_fnc_createNamespace;
 GVAR(Cache) = call CBA_fnc_createNamespace;
 GVAR(Cache) setVariable [
 	SVAR(TripodClasses)
@@ -24,14 +25,15 @@ COMPILE_FUNCTION(fnc_handleDeployedEH);
 COMPILE_FUNCTION(fnc_handleCarryItemExchange);
 COMPILE_FUNCTION(fnc_uiHandleInventory);
 
-COMPILE_FUNCTION(fnc_addTripodAction);
-COMPILE_FUNCTION(fnc_removeTripodAction);
+COMPILE_FUNCTION(fnc_handleTripodActions);
 COMPILE_FUNCTION(fnc_checkWeaponHasTripod);
 COMPILE_FUNCTION(fnc_affectWeapon);
 
 COMPILE_FUNCTION(fnc_getWeaponDeployGestures);
 COMPILE_FUNCTION(fnc_checkWeaponHasDeployGestures);
 COMPILE_FUNCTION(fnc_selectGesture);
+COMPILE_FUNCTION(fnc_getCompatibleAttachOption);
+COMPILE_FUNCTION(fnc_getPreferredCarryOption);
 
 GVAR(fnc_addEHs) = {
 	private _ehId = player getVariable [SVAR(LoadoutEH), -1];

@@ -13,7 +13,6 @@ Parameters:
 Returns:
 	nothing
 
-
 Examples:
     (begin example)
 		player addEventHandler [
@@ -25,33 +24,26 @@ Examples:
 Author:
 	10Dozen
 ---------------------------------------------------------------------------- */
-
 params ["_unit", "_isDeployed"];
 
 // --- Skip anim changes if player is in reload sequence
 if (_unit getVariable [SVAR(ReloadInProgress), false]) exitWith {};
 
-private _weapon = primaryWeapon _unit;
-if (_weapon != currentWeapon _unit) exitWith {};
-
-private _isGesturesEnabled = GVAR(Enabled_ProneGesture) || { GVAR(Enabled_CrouchGesture) || GVAR(Enabled_StandGesture) };
+private _weapon = currentWeapon _unit;
+private _isGestureEnabled = GVAR(Enabled_StandGesture) || GVAR(Enabled_CrouchGesture) || GVAR(Enabled_ProneGesture);
 
 if (
-	_isGesturesEnabled
+	_isGestureEnabled
+	&& _isDeployed
 	&& { [_weapon] call GVAR(fnc_checkWeaponHasDeployGestures) }
 ) then {
-	if (_isDeployed) then {
-		private _gesture = [_unit, _weapon] call GVAR(fnc_selectGesture);
-		if (_gesture != "") then {
-			_unit playAction _gesture;
-			_unit setVariable [SVAR(HoldGestureApplied), true];
-		};
-	} else {
-		// --- Play reverting action only if hold gesture were applied
-		if (_unit getVariable [SVAR(HoldGestureApplied), false]) then {
-			_unit playAction "gestureNod";
-			_unit setVariable [SVAR(HoldGestureApplied), false];
-		};
+	private _guesture = [_unit, _weapon] call GVAR(fnc_selectGesture);
+	_unit playAction _guesture;
+	_unit setVariable [SVAR(HoldGestureApplied),true];
+} else {
+	if (_unit getVariable [SVAR(HoldGestureApplied),false]) then {
+		_unit playAction "gestureNod";
+		_unit setVariable [SVAR(HoldGestureApplied),false];
 	};
 };
 
