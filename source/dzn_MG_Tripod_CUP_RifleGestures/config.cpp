@@ -38,6 +38,9 @@ class CfgPatches
 	
 #define DEPLOYED_GESTURE_CROUCH_PRONE_TYPE21 \
 	dzn_MG_Tripod_deployedGesture[] = {"","dzn_MG_Tripod_GestureHoldCrouchType2","dzn_MG_Tripod_GestureHoldProneType1"}
+
+#define DEPLOYED_GESTURE_PRONE_TYPE3 \
+	dzn_MG_Tripod_deployedGesture[] = {"","","dzn_MG_Tripod_GestureHoldProneType3"}
 	
 #define RELOAD_EH \
 	class EventHandlers: EventHandlers \
@@ -90,7 +93,7 @@ class CfgWeapons
 	class CUP_l85a2: CUP_l85a2_base {};
 	class CUP_arifle_L86A2: CUP_l85a2
 	{
-		DEPLOYED_GESTURE_PRONE_TYPE1;
+		DEPLOYED_GESTURE_PRONE_TYPE3;
 		RELOAD_EH;
 	};
 	

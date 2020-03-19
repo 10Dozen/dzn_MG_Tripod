@@ -197,6 +197,7 @@ class CfgMovesBasic
 		dzn_MG_Tripod_GestureHoldType4			= "dzn_MG_Tripod_GestureHoldType4";
 		dzn_MG_Tripod_GestureHoldProneType1		= "dzn_MG_Tripod_GestureHoldProneType1";
 		dzn_MG_Tripod_GestureHoldProneType2		= "dzn_MG_Tripod_GestureHoldProneType2";
+		dzn_MG_Tripod_GestureHoldProneType3 	= "dzn_MG_Tripod_GestureHoldProneType3";
 		dzn_MG_Tripod_GestureHoldCrouchType1	= "dzn_MG_Tripod_GestureHoldCrouchType1";
 		dzn_MG_Tripod_GestureHoldCrouchType2	= "dzn_MG_Tripod_GestureHoldCrouchType2";
 	};
@@ -210,6 +211,7 @@ class CfgMovesBasic
 			dzn_MG_Tripod_GestureHoldType4[]			= {"dzn_MG_Tripod_GestureHoldType4","Gesture"};
 			dzn_MG_Tripod_GestureHoldProneType1[]		= {"","Gesture"};
 			dzn_MG_Tripod_GestureHoldProneType2[]		= {"","Gesture"};
+			dzn_MG_Tripod_GestureHoldProneType3[]		= {"","Gesture"};
 			dzn_MG_Tripod_GestureHoldCrouchType1[]		= {"dzn_MG_Tripod_GestureHoldCrouchType1","Gesture"};
 			dzn_MG_Tripod_GestureHoldCrouchType2[]		= {"dzn_MG_Tripod_GestureHoldCrouchType2","Gesture"};
 		};
@@ -222,6 +224,7 @@ class CfgMovesBasic
 			dzn_MG_Tripod_GestureHoldType4[]			= {"","Gesture"};
 			dzn_MG_Tripod_GestureHoldProneType1[]		= {"dzn_MG_Tripod_GestureHoldProneType1","Gesture"};
 			dzn_MG_Tripod_GestureHoldProneType2[]		= {"dzn_MG_Tripod_GestureHoldProneType2","Gesture"};
+			dzn_MG_Tripod_GestureHoldProneType3[]		= {"dzn_MG_Tripod_GestureHoldProneType3","Gesture"};
 			dzn_MG_Tripod_GestureHoldCrouchType1[]		= {"","Gesture"};
 			dzn_MG_Tripod_GestureHoldCrouchType2[]		= {"","Gesture"};
 		};
@@ -234,6 +237,7 @@ class CfgMovesBasic
 			dzn_MG_Tripod_GestureHoldType4[]			= {"dzn_MG_Tripod_GestureHoldType4_Context","Gesture"};
 			dzn_MG_Tripod_GestureHoldProneType1[]		= {"","Gesture"};
 			dzn_MG_Tripod_GestureHoldProneType2[]		= {"","Gesture"};
+			dzn_MG_Tripod_GestureHoldProneType3[]		= {"","Gesture"};
 			dzn_MG_Tripod_GestureHoldCrouchType1[]		= {"dzn_MG_Tripod_GestureHoldCrouchType1_Context","Gesture"};
 			dzn_MG_Tripod_GestureHoldCrouchType2[]		= {"dzn_MG_Tripod_GestureHoldCrouchType2_Context","Gesture"};
 		};
@@ -245,6 +249,7 @@ class CfgMovesBasic
 			dzn_MG_Tripod_GestureHoldType4[]			= {"dzn_MG_Tripod_GestureHoldType4_Context","Gesture"};
 			dzn_MG_Tripod_GestureHoldProneType1[]		= {"","Gesture"};
 			dzn_MG_Tripod_GestureHoldProneType2[]		= {"","Gesture"};
+			dzn_MG_Tripod_GestureHoldProneType3[]		= {"","Gesture"};
 			dzn_MG_Tripod_GestureHoldCrouchType1[]		= {"dzn_MG_Tripod_GestureHoldCrouchType1_Context","Gesture"};
 			dzn_MG_Tripod_GestureHoldCrouchType2[]		= {"dzn_MG_Tripod_GestureHoldCrouchType2_Context","Gesture"};
 
@@ -256,6 +261,7 @@ class CfgMovesBasic
 				dzn_MG_Tripod_GestureHoldType4[]			= {"dzn_MG_Tripod_GestureHoldType4_Context","Gesture"};
 				dzn_MG_Tripod_GestureHoldProneType1[]		= {"","Gesture"};
 				dzn_MG_Tripod_GestureHoldProneType2[]		= {"","Gesture"};
+				dzn_MG_Tripod_GestureHoldProneType3[]		= {"","Gesture"};
 				dzn_MG_Tripod_GestureHoldCrouchType1[]		= {"dzn_MG_Tripod_GestureHoldCrouchType1_Context","Gesture"};
 				dzn_MG_Tripod_GestureHoldCrouchType2[]		= {"dzn_MG_Tripod_GestureHoldCrouchType2_Context","Gesture"};
 			};
@@ -286,7 +292,7 @@ class CfgGesturesMale
 			mask = "leftHand";
 			leftHandIKBeg = 1;
 			leftHandIKEnd = 1;
-			leftHandIKCurve[] = {0.0};
+			leftHandIKCurve[] = {0};
 			enableOptics = 1;
 			canPullTrigger = 1;
 			disableWeapons = 0;
@@ -310,6 +316,7 @@ class CfgGesturesMale
 		/*
 		 *	HoldProneType1 	-- default prone (for all mgs, both CUP and A3)
 		 *	HoldProneType2 	-- CUP M249 (or other MGs with stock close to shoulder)
+		 *	HoldProneType3 	-- L86A2 specifc
 		 */
 		class dzn_MG_Tripod_GestureHoldProneType1: Default
 		{
@@ -328,8 +335,13 @@ class CfgGesturesMale
 		{
 			file = "dzn_MG_Tripod_Core\anim\Hold\HoldProneType2.rtm";
 		};
+		class dzn_MG_Tripod_GestureHoldProneType3: dzn_MG_Tripod_GestureHoldProneType1
+		{
+			file = "dzn_MG_Tripod_Core\anim\Hold\HoldProneType3.rtm";
+		};
 	};
 };
+
 
 /*****
 	CUP
@@ -359,33 +371,4 @@ class CfgGesturesMale
 	LMG_03_F (LIM85)		| HoldType3						|  ProneType1				| CrouchType2
 	arifle_RPK12_F			| -								|  ProneType1				| -
 	arifle_MXM_F			| -								|  ProneType1				| -
-*/
-
-/*
-	dzn_classes = [
-		"CUP_lmg_L110A1"
-		, "CUP_lmg_L7A2"
-		, "CUP_arifle_L86A2"
-		, "CUP_lmg_m249_pip1"
-		, "CUP_lmg_m249_pip3"
-		, "CUP_lmg_M60"
-		, "CUP_lmg_M60E4_norail"
-		, "CUP_lmg_MG3_rail"
-		, "CUP_arifle_MG36_camo"
-		, "CUP_lmg_Mk48_nohg_od"
-		, "CUP_lmg_Pecheneg"
-		, "CUP_arifle_RPK74M"
-		, "CUP_arifle_xm8_SAW"
-
-
-		, "arifle_RPK12_lush_F"
-		, "LMG_Zafir_F"
-		, "LMG_Mk200_F"
-	];
-
-	{
-		player addAction [" ## " + _x, { params ["", "", "", "_w"]; [player, _w, 3] call BIS_fnc_addWeapon; }, _x];
-	} forEach dzn_classes;
-
-	player playAction "dzn_MG_Tripod_GestureHoldType1";
 */

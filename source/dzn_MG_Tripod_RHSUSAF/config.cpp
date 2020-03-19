@@ -41,6 +41,19 @@ class rhs_UnderSlot_m240: asdg_SlotInfo
 #define DEPLOYED_GESTURE_EMPTY \
 	dzn_MG_Tripod_deployedGesture[] = {"","",""}
 
+#define DEPLOYED_GESTURE_M249 \
+	dzn_MG_Tripod_deployedGesture[] = {"","dzn_MG_Tripod_GestureHoldCrouchType2","dzn_MG_Tripod_GestureHoldProneType2"}
+
+#define RELOAD_EH \
+	class EventHandlers: EventHandlers \
+	{ \
+		class dzn_MG_Tripod \
+		{ \
+			reload = "_this call dzn_MG_Tripod_fnc_handleReloadEH"; \
+			reloaded = "_this call dzn_MG_Tripod_fnc_handleReloadedEH"; \
+		}; \
+	}
+
 class CfgWeapons
 {
 	// --- Tripod Attach
@@ -93,24 +106,33 @@ class CfgWeapons
 	
 	// --- RHS M249
 	// --- ------------------------------
-	class rhs_weap_M249_base;
-	class rhs_weap_lmg_minimi_railed;
+	class rhs_weap_saw_base: Rifle_Base_F {};
+	class rhs_weap_lmg_minimipara: rhs_weap_saw_base {};
+	class rhs_weap_lmg_minimi_railed: rhs_weap_lmg_minimipara {};
 	class rhs_weap_m249: rhs_weap_lmg_minimi_railed
 	{
-		DEPLOYED_GESTURE_EMPTY;
+		DEPLOYED_GESTURE_M249;
+		RELOAD_EH;
 	};
 	class rhs_weap_m249_pip_S: rhs_weap_lmg_minimi_railed
 	{
-		DEPLOYED_GESTURE_EMPTY;
+		DEPLOYED_GESTURE_M249;
+		RELOAD_EH;
 	};
 	class rhs_weap_m249_pip: rhs_weap_lmg_minimi_railed
 	{
-		DEPLOYED_GESTURE_EMPTY;
+		DEPLOYED_GESTURE_M249;
+		RELOAD_EH;
 	};
 	class rhs_weap_m249_pip_L: rhs_weap_lmg_minimi_railed
 	{
-		DEPLOYED_GESTURE_EMPTY;
+		DEPLOYED_GESTURE_M249;
+		RELOAD_EH;
 	};
+	
+	// --- RHS M240
+	// --- ------------------------------
+	class rhs_weap_M249_base;
 	class rhs_weap_m240_base: rhs_weap_M249_base
 	{
 		DEPLOYED_GESTURE_EMPTY;

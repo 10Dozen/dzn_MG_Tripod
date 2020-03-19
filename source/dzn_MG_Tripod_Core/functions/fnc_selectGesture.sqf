@@ -27,7 +27,7 @@ Author:
 
 params ["_unit", "_weapon"];
 
-([_weapon] call GVAR(fnc_getWeaponDeployGestures)) params ["_gestures", "_hasBipod"];
+([_weapon] call GVAR(fnc_getWeaponDeployGestures)) params ["_gestures", "_hasBipod"]; // [ ["","","dzn_MG_Tripod_GestureHoldProneType1"],  false]
 
 // --- Exit if no gestures defined at all
 if (_gestures isEqualTo []) exitWith { "" };
